@@ -3,7 +3,7 @@
 model:
   name: "Qwen/Qwen3-0.6B"
   dtype: "bfloat16"
-  device: "auto"            # auto | cpu | cuda | mps
+  device: "cuda"            # auto | cpu | cuda | mps
 
 generate:
   max_new_tokens: 200

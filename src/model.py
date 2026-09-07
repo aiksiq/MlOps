@@ -16,11 +16,11 @@ def set_seed(seed: int) -> None:
 
 def load_model(params: dict):
     """Загрузить токенизатор и модель по имени из конфига."""
-    name = "Qwen/Qwen3-0.6B"
+    name = params["model"]["name"]
     tokenizer = AutoTokenizer.from_pretrained(name)
     model = AutoModelForCausalLM.from_pretrained(
         name,
-        dtype=getattr(torch, params["model"]["dtype"]),
+        torch_dtype=getattr(torch, params["model"]["dtype"]),
         device_map=params["model"]["device"],
     )
     model.eval()

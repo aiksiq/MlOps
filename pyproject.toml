@@ -4,9 +4,17 @@ version = "0.1.0"
 description = "MLOPS-26, домашняя работа 1: окружение и бенчмарк"
 requires-python = ">=3.12"
 dependencies = [
-    "torch",
-    "transformers",
-    "accelerate",
-    "numpy",
-    "pyyaml",
+    "torch==2.7.1+cu128",
+    "transformers==4.52.4",
+    "accelerate==1.7.0",
+    "numpy==2.2.6",
+    "pyyaml==6.0.2",
 ]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
