@@ -12,7 +12,7 @@ else
   echo "uv не найден: установите uv или выполните uv sync" >&2
   exit 1
 fi
-
+#Чуть навайбкодил чтобы не падало на Windows, где нет команды `command -v` и uv.exe лежит в другом месте.
 fails=0
 ok()   { printf '  \033[32m✓\033[0m %s\n' "$1"; }
 fail() { printf '  \033[31m✗\033[0m %s\n' "$1"; fails=$((fails+1)); }
