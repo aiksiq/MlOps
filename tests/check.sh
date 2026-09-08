@@ -4,6 +4,15 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
+if command -v uv >/dev/null 2>&1; then
+  UV=uv
+elif [ -x ".venv/Scripts/uv.exe" ]; then
+  UV=".venv/Scripts/uv.exe"
+else
+  echo "uv не найден: установите uv или выполните uv sync" >&2
+  exit 1
+fi
+
 fails=0
 ok()   { printf '  \033[32m✓\033[0m %s\n' "$1"; }
 fail() { printf '  \033[31m✗\033[0m %s\n' "$1"; fails=$((fails+1)); }
@@ -23,7 +32,7 @@ cp params.yaml params.yaml.orig
 sed -i.bak 's|^  name: .*|  name: "HuggingFaceTB/SmolLM2-135M-Instruct"|' params.yaml
 # Мало убедиться, что не упало: проверяем, что загрузилась именно та модель,
 # которая указана в конфиге. Иначе захардкоженное имя проходит незамеченным.
-if uv run python -c "
+if "$UV" run python -c "
 from src.config import load_params
 from src.model import load_model
 p = load_params()

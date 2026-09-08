@@ -1,13 +1,15 @@
 .PHONY: install generate bench check clean
 
+UV := $(shell if command -v uv >/dev/null 2>&1; then command -v uv; else echo .venv/Scripts/uv.exe; fi)
+
 install:
-	uv sync
+	$(UV) sync
 
 generate:
-	uv run python -m src.generate
+	$(UV) run python -m src.generate
 
 bench:
-	uv run python -m src.bench
+	$(UV) run python -m src.bench
 
 check:
 	bash tests/check.sh
