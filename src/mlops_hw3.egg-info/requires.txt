@@ -1,0 +1,6 @@
+dvc>=3.55
+pyarrow>=17.0
+pandas>=2.2
+pydantic>=2.9
+datasketch>=1.6
+pyyaml>=6.0

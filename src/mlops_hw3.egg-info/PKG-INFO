@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: mlops-hw3
+Version: 0.1.0
+Summary: MLOPS-26, домашняя работа 3: датасет, DVC, валидация, честный сплит
+Requires-Python: >=3.12
+Requires-Dist: dvc>=3.55
+Requires-Dist: pyarrow>=17.0
+Requires-Dist: pandas>=2.2
+Requires-Dist: pydantic>=2.9
+Requires-Dist: datasketch>=1.6
+Requires-Dist: pyyaml>=6.0

@@ -1,0 +1,11 @@
+{
+  "version": "v2",
+  "files": 2,
+  "rows_scanned": 98169,
+  "rows_written": 6000,
+  "dropped_topic_filter": 0,
+  "dropped_answer_mismatch": 0,
+  "topics_filter": 0,
+  "system_prompt_variants": 5,
+  "seconds": 0.7
+}
