@@ -45,6 +45,16 @@ make compare      # docs/compare.md
 make check        # девять проверок
 ```
 
+On Windows, `uv sync` selects the CUDA 12.8 PyTorch wheel for NVIDIA GPUs.
+Run the stages from PowerShell with the project environment:
+
+```powershell
+uv run python -m src.train --variant all_layers
+uv run python -m src.train --variant freeze14
+uv run python -m src.plot
+uv run python -m src.compare --variant all_layers
+```
+
 ## Где что лежит
 
 ```
