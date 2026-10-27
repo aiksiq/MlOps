@@ -1,0 +1,676 @@
+{
+  "overall": {
+    "n": 50,
+    "correct": 20,
+    "valid": 22,
+    "errors": 0,
+    "accuracy": 0.4,
+    "format_rate": 0.44
+  },
+  "slices": {
+    "Doctor_Who": {
+      "n": 17,
+      "correct": 6,
+      "valid": 7,
+      "errors": 0,
+      "accuracy": 0.35294117647058826,
+      "format_rate": 0.4117647058823529
+    },
+    "Geology": {
+      "n": 16,
+      "correct": 8,
+      "valid": 9,
+      "errors": 0,
+      "accuracy": 0.5,
+      "format_rate": 0.5625
+    },
+    "Steam_engine": {
+      "n": 17,
+      "correct": 6,
+      "valid": 6,
+      "errors": 0,
+      "accuracy": 0.35294117647058826,
+      "format_rate": 0.35294117647058826
+    }
+  },
+  "per_item": [
+    {
+      "id": "gold-57112686b654c5140001fbd3",
+      "raw": "{\n  \"answer\": \"B. solar\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-57112686b654c5140001fbd4",
+      "raw": "{\n  \"answer\": \"A. Rankine\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-57112686b654c5140001fbd5",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571126dfa58dae1900cd6cb2",
+      "raw": "{\n  \"answer\": \"D. atmospheric engine\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571126dfa58dae1900cd6cb4",
+      "raw": "{\n  \"answer\": \"C. 1712\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571127a5a58dae1900cd6cc4",
+      "raw": "{\n  \"answer\": \"C. United Kingdom\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571127a5a58dae1900cd6cc5",
+      "raw": "{\"answer\": \"B. 21 February 1804\"}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571127a5a58dae1900cd6cc7",
+      "raw": "{\n  \"answer\": \"B. Wales\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d0e",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d0f",
+      "raw": "{\n  \"answer\": \"C. multi-stage centrifugal\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d10",
+      "raw": "{\n  \"answer\": \"B. 1850s\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d11",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d12",
+      "raw": "{\n  \"answer\": \"B\"\n}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-57113639a58dae1900cd6d18",
+      "raw": "{\n  \"answer\": \"B. three\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571136b8a58dae1900cd6d22",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571136b8a58dae1900cd6d24",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-57113ba6b654c5140001fc1f",
+      "raw": "{\n  \"answer\": \"C. Lead fusible plugs\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-5727efabff5b5019007d98e2",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727efabff5b5019007d98e4",
+      "raw": "{\n  \"answer\": \"B. TARDIS\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727efabff5b5019007d98e6",
+      "raw": "{\n  \"answer\": \"C. science-fiction\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f0b1ff5b5019007d98f2",
+      "raw": "{\n  \"answer\": \"A. 1963 to 1989\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f0b1ff5b5019007d98f4",
+      "raw": "{\"answer\": \"C\"}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f18c3acd2414000df063",
+      "raw": "{\n  \"answer\": \"C. Twelve\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f18c3acd2414000df064",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f18c3acd2414000df065",
+      "raw": "{\n  \"answer\": \"REFUSE\"\n}",
+      "parsed": "REFUSE",
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f2583acd2414000df087",
+      "raw": "{\n  \"answer\": \"B. Gallifrey\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f2583acd2414000df08a",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f3193acd2414000df0a5",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f3193acd2414000df0a8",
+      "raw": "{\n  \"answer\": \"C. humans\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f3193acd2414000df0a9",
+      "raw": "{\n  \"answer\": \"B. Time Lord\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f44c2ca10214002d9a32",
+      "raw": "{\n  \"answer\": \"D\"\n}",
+      "parsed": "D",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f44c2ca10214002d9a33",
+      "raw": "{\n  \"answer\": \"B. The Daleks (a.k.a. The Mutants)\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f5622ca10214002d9a44",
+      "raw": "{\n  \"answer\": \"B. 26\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f5622ca10214002d9a47",
+      "raw": "{\n  \"answer\": \"B. the series would return\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-572657d9dd62a815002e8230",
+      "raw": "{\n  \"answer\": \"B. melt (magma and/or lava)\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572657d9dd62a815002e8234",
+      "raw": "{\n  \"answer\": \"B\"\n}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265d08708984140094c397",
+      "raw": "{\n  \"answer\": \"D\"\n}",
+      "parsed": "D",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265d08708984140094c398",
+      "raw": "{\n  \"answer\": \"B. the crust and rigid uppermost portion of the upper mantle\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265d08708984140094c399",
+      "raw": "{\n  \"answer\": \"B. asthenosphere\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265d08708984140094c39a",
+      "raw": "{\n  \"answer\": \"B\"\n}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265f605951b619008f70db",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265f605951b619008f70dd",
+      "raw": "{\n  \"answer\": \"B. Transform boundaries\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265f605951b619008f70de",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57266193dd62a815002e832a",
+      "raw": "{\n  \"answer\": \"D. seismic waves\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57266193dd62a815002e832c",
+      "raw": "{\n  \"answer\": \"REFUSE\"\n}",
+      "parsed": "REFUSE",
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57266193dd62a815002e832d",
+      "raw": "{\n  \"answer\": \"B. the mantle\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572663a9f1498d1400e8ddf2",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572663a9f1498d1400e8ddf6",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572665ff708984140094c4c3",
+      "raw": "{\n  \"answer\": \"D. The principle of cross-cutting relationships\"\n}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572665ff708984140094c4c4",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    }
+  ],
+  "status": "complete",
+  "model": {
+    "kind": "base",
+    "name": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca"
+  },
+  "protocol_sha256": "49e5f121f7b7f922433e227b05a0fe53605c1278cdc2f37a4cdff9af13cf8584",
+  "golden_sha256": "ac134cd73e44df683d9baa56348501900e727e08790bb03b3e34906a70ff3903",
+  "baseline_spec_sha256": "f71269b95f6b4e1e160fa25e9af6c973517cfebad15880b75b56c8184680b163",
+  "behavioral": {
+    "overall": {
+      "n": 3,
+      "correct": 2,
+      "valid": 2,
+      "errors": 0,
+      "accuracy": 0.6666666666666666,
+      "format_rate": 0.6666666666666666
+    },
+    "slices": {
+      "Doctor_Who": {
+        "n": 1,
+        "correct": 1,
+        "valid": 1,
+        "errors": 0,
+        "accuracy": 1.0,
+        "format_rate": 1.0
+      },
+      "Steam_engine": {
+        "n": 1,
+        "correct": 0,
+        "valid": 0,
+        "errors": 0,
+        "accuracy": 0.0,
+        "format_rate": 0.0
+      },
+      "refusal": {
+        "n": 1,
+        "correct": 1,
+        "valid": 1,
+        "errors": 0,
+        "accuracy": 1.0,
+        "format_rate": 1.0
+      }
+    },
+    "per_item": [
+      {
+        "id": "behavior-format",
+        "raw": "{\n  \"answer\": \"B. solar\"\n}",
+        "parsed": null,
+        "valid": false,
+        "correct": false,
+        "error": null,
+        "slices": [
+          "Steam_engine"
+        ]
+      },
+      {
+        "id": "behavior-paraphrase",
+        "raw": "{\n  \"answer\": \"C\"\n}",
+        "parsed": "C",
+        "valid": true,
+        "correct": true,
+        "error": null,
+        "slices": [
+          "Doctor_Who"
+        ]
+      },
+      {
+        "id": "behavior-refusal",
+        "raw": "{\n  \"answer\": \"REFUSE\"\n}",
+        "parsed": "REFUSE",
+        "valid": true,
+        "correct": true,
+        "error": null,
+        "slices": [
+          "refusal"
+        ]
+      }
+    ]
+  },
+  "leakage": {
+    "exact_or_group_intersections": 0,
+    "n_train_index": 2657,
+    "n_golden": 50,
+    "n_behavioral": 3
+  },
+  "outputs_sha256": "63edb97c29e04438e4bc70f62f0c1e8875af8966b9bf65218fe7a469abc6fc54",
+  "evaluation_run_id": "786096f65c4b49b4b2fc966ecb135494"
+}

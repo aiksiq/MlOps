@@ -1,0 +1,678 @@
+{
+  "overall": {
+    "n": 50,
+    "correct": 41,
+    "valid": 42,
+    "errors": 0,
+    "accuracy": 0.82,
+    "format_rate": 0.84
+  },
+  "slices": {
+    "Doctor_Who": {
+      "n": 17,
+      "correct": 14,
+      "valid": 14,
+      "errors": 0,
+      "accuracy": 0.8235294117647058,
+      "format_rate": 0.8235294117647058
+    },
+    "Geology": {
+      "n": 16,
+      "correct": 14,
+      "valid": 15,
+      "errors": 0,
+      "accuracy": 0.875,
+      "format_rate": 0.9375
+    },
+    "Steam_engine": {
+      "n": 17,
+      "correct": 13,
+      "valid": 13,
+      "errors": 0,
+      "accuracy": 0.7647058823529411,
+      "format_rate": 0.7647058823529411
+    }
+  },
+  "per_item": [
+    {
+      "id": "gold-57112686b654c5140001fbd3",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-57112686b654c5140001fbd4",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-57112686b654c5140001fbd5",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571126dfa58dae1900cd6cb2",
+      "raw": "D. atmospheric engine",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571126dfa58dae1900cd6cb4",
+      "raw": "C. 1712",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571127a5a58dae1900cd6cc4",
+      "raw": "C. United Kingdom",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571127a5a58dae1900cd6cc5",
+      "raw": "B. 21 February 1804",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571127a5a58dae1900cd6cc7",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d0e",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d0f",
+      "raw": "{\"answer\": \"C\"}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d10",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d11",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571135b8a58dae1900cd6d12",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-57113639a58dae1900cd6d18",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571136b8a58dae1900cd6d22",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-571136b8a58dae1900cd6d24",
+      "raw": "{\"answer\": \"A\"}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-57113ba6b654c5140001fc1f",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Steam_engine"
+      ]
+    },
+    {
+      "id": "gold-5727efabff5b5019007d98e2",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727efabff5b5019007d98e4",
+      "raw": "{\"answer\": \"B. TARDIS\"}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727efabff5b5019007d98e6",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f0b1ff5b5019007d98f2",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f0b1ff5b5019007d98f4",
+      "raw": "REFUSE",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f18c3acd2414000df063",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f18c3acd2414000df064",
+      "raw": "{\"answer\": \"C\"}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f18c3acd2414000df065",
+      "raw": "{\"answer\": \"A\"}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f2583acd2414000df087",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f2583acd2414000df08a",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f3193acd2414000df0a5",
+      "raw": "{\"answer\": \"A\"}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f3193acd2414000df0a8",
+      "raw": "{\"answer\": \"C\"}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f3193acd2414000df0a9",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f44c2ca10214002d9a32",
+      "raw": "{\"answer\": \"D\"}",
+      "parsed": "D",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f44c2ca10214002d9a33",
+      "raw": "{\n  \"answer\": \"B\"\n}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f5622ca10214002d9a44",
+      "raw": "{\"answer\": \"B. 26\"}",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-5727f5622ca10214002d9a47",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Doctor_Who"
+      ]
+    },
+    {
+      "id": "gold-572657d9dd62a815002e8230",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572657d9dd62a815002e8234",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265d08708984140094c397",
+      "raw": "{\n  \"answer\": \"D\"\n}",
+      "parsed": "D",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265d08708984140094c398",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265d08708984140094c399",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265d08708984140094c39a",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265f605951b619008f70db",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265f605951b619008f70dd",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57265f605951b619008f70de",
+      "raw": "{\n  \"answer\": \"C\"\n}",
+      "parsed": "C",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57266193dd62a815002e832a",
+      "raw": "{\"answer\": \"D\"}",
+      "parsed": "D",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57266193dd62a815002e832c",
+      "raw": "{\"answer\": \"A\"}",
+      "parsed": "A",
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-57266193dd62a815002e832d",
+      "raw": "{\"answer\": \"B\"}",
+      "parsed": "B",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572663a9f1498d1400e8ddf2",
+      "raw": "{\"answer\": \"A\"}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572663a9f1498d1400e8ddf6",
+      "raw": "{\"answer\": \"A\"}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572665ff708984140094c4c3",
+      "raw": "D. The principle of cross-cutting relationships",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    },
+    {
+      "id": "gold-572665ff708984140094c4c4",
+      "raw": "{\n  \"answer\": \"A\"\n}",
+      "parsed": "A",
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "Geology"
+      ]
+    }
+  ],
+  "status": "complete",
+  "model": {
+    "kind": "adapter",
+    "name": "my-qwen-adapter",
+    "version": "2",
+    "run_id": "efa9f05aded243eeb61aa097d7a881da",
+    "uri": "models:/my-qwen-adapter/2"
+  },
+  "protocol_sha256": "49e5f121f7b7f922433e227b05a0fe53605c1278cdc2f37a4cdff9af13cf8584",
+  "golden_sha256": "ac134cd73e44df683d9baa56348501900e727e08790bb03b3e34906a70ff3903",
+  "baseline_spec_sha256": "f71269b95f6b4e1e160fa25e9af6c973517cfebad15880b75b56c8184680b163",
+  "behavioral": {
+    "overall": {
+      "n": 3,
+      "correct": 3,
+      "valid": 3,
+      "errors": 0,
+      "accuracy": 1.0,
+      "format_rate": 1.0
+    },
+    "slices": {
+      "Doctor_Who": {
+        "n": 1,
+        "correct": 1,
+        "valid": 1,
+        "errors": 0,
+        "accuracy": 1.0,
+        "format_rate": 1.0
+      },
+      "Steam_engine": {
+        "n": 1,
+        "correct": 1,
+        "valid": 1,
+        "errors": 0,
+        "accuracy": 1.0,
+        "format_rate": 1.0
+      },
+      "refusal": {
+        "n": 1,
+        "correct": 1,
+        "valid": 1,
+        "errors": 0,
+        "accuracy": 1.0,
+        "format_rate": 1.0
+      }
+    },
+    "per_item": [
+      {
+        "id": "behavior-format",
+        "raw": "{\"answer\": \"B\"}",
+        "parsed": "B",
+        "valid": true,
+        "correct": true,
+        "error": null,
+        "slices": [
+          "Steam_engine"
+        ]
+      },
+      {
+        "id": "behavior-paraphrase",
+        "raw": "{\n  \"answer\": \"C\"\n}",
+        "parsed": "C",
+        "valid": true,
+        "correct": true,
+        "error": null,
+        "slices": [
+          "Doctor_Who"
+        ]
+      },
+      {
+        "id": "behavior-refusal",
+        "raw": "{\"answer\": \"REFUSE\"}",
+        "parsed": "REFUSE",
+        "valid": true,
+        "correct": true,
+        "error": null,
+        "slices": [
+          "refusal"
+        ]
+      }
+    ]
+  },
+  "leakage": {
+    "exact_or_group_intersections": 0,
+    "n_train_index": 2657,
+    "n_golden": 50,
+    "n_behavioral": 3
+  },
+  "outputs_sha256": "6ebaecef5bee50cce939ee2c5d4a1a73fb113a25c6b4bac6adeeefb5a9ac22a9",
+  "evaluation_run_id": "786096f65c4b49b4b2fc966ecb135494"
+}

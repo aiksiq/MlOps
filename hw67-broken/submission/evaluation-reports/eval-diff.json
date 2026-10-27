@@ -1,0 +1,29 @@
+{
+  "improved": [
+    "gold-57112686b654c5140001fbd3",
+    "gold-57112686b654c5140001fbd4",
+    "gold-571127a5a58dae1900cd6cc7",
+    "gold-571135b8a58dae1900cd6d0f",
+    "gold-571135b8a58dae1900cd6d10",
+    "gold-57113639a58dae1900cd6d18",
+    "gold-57113ba6b654c5140001fc1f",
+    "gold-5727efabff5b5019007d98e6",
+    "gold-5727f0b1ff5b5019007d98f2",
+    "gold-5727f18c3acd2414000df063",
+    "gold-5727f18c3acd2414000df065",
+    "gold-5727f2583acd2414000df087",
+    "gold-5727f3193acd2414000df0a8",
+    "gold-5727f3193acd2414000df0a9",
+    "gold-5727f44c2ca10214002d9a33",
+    "gold-5727f5622ca10214002d9a47",
+    "gold-572657d9dd62a815002e8230",
+    "gold-57265d08708984140094c398",
+    "gold-57265d08708984140094c399",
+    "gold-57265f605951b619008f70dd",
+    "gold-57266193dd62a815002e832a",
+    "gold-57266193dd62a815002e832d"
+  ],
+  "regressed": [
+    "gold-5727f0b1ff5b5019007d98f4"
+  ]
+}

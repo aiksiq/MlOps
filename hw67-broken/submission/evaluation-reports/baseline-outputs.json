@@ -1,0 +1,320 @@
+[
+  {
+    "id": "gold-57112686b654c5140001fbd3",
+    "raw": "{\n  \"answer\": \"B. solar\"\n}",
+    "error": null,
+    "latency_seconds": 1.9219999997876585
+  },
+  {
+    "id": "gold-57112686b654c5140001fbd4",
+    "raw": "{\n  \"answer\": \"A. Rankine\"\n}",
+    "error": null,
+    "latency_seconds": 1.0150000001303852
+  },
+  {
+    "id": "gold-57112686b654c5140001fbd5",
+    "raw": "{\n  \"answer\": \"A\"\n}",
+    "error": null,
+    "latency_seconds": 0.8130000000819564
+  },
+  {
+    "id": "gold-571126dfa58dae1900cd6cb2",
+    "raw": "{\n  \"answer\": \"D. atmospheric engine\"\n}",
+    "error": null,
+    "latency_seconds": 1.5159999998286366
+  },
+  {
+    "id": "gold-571126dfa58dae1900cd6cb4",
+    "raw": "{\n  \"answer\": \"C. 1712\"\n}",
+    "error": null,
+    "latency_seconds": 1.3280000002123415
+  },
+  {
+    "id": "gold-571127a5a58dae1900cd6cc4",
+    "raw": "{\n  \"answer\": \"C. United Kingdom\"\n}",
+    "error": null,
+    "latency_seconds": 1.125
+  },
+  {
+    "id": "gold-571127a5a58dae1900cd6cc5",
+    "raw": "{\"answer\": \"B. 21 February 1804\"}",
+    "error": null,
+    "latency_seconds": 1.358999999705702
+  },
+  {
+    "id": "gold-571127a5a58dae1900cd6cc7",
+    "raw": "{\n  \"answer\": \"B. Wales\"\n}",
+    "error": null,
+    "latency_seconds": 1.0309999999590218
+  },
+  {
+    "id": "gold-571135b8a58dae1900cd6d0e",
+    "raw": "{\n  \"answer\": \"C\"\n}",
+    "error": null,
+    "latency_seconds": 0.7970000002533197
+  },
+  {
+    "id": "gold-571135b8a58dae1900cd6d0f",
+    "raw": "{\n  \"answer\": \"C. multi-stage centrifugal\"\n}",
+    "error": null,
+    "latency_seconds": 1.2809999999590218
+  },
+  {
+    "id": "gold-571135b8a58dae1900cd6d10",
+    "raw": "{\n  \"answer\": \"B. 1850s\"\n}",
+    "error": null,
+    "latency_seconds": 2.0320000001229346
+  },
+  {
+    "id": "gold-571135b8a58dae1900cd6d11",
+    "raw": "{\n  \"answer\": \"C\"\n}",
+    "error": null,
+    "latency_seconds": 0.8589999997057021
+  },
+  {
+    "id": "gold-571135b8a58dae1900cd6d12",
+    "raw": "{\n  \"answer\": \"B\"\n}",
+    "error": null,
+    "latency_seconds": 0.8440000000409782
+  },
+  {
+    "id": "gold-57113639a58dae1900cd6d18",
+    "raw": "{\n  \"answer\": \"B. three\"\n}",
+    "error": null,
+    "latency_seconds": 1.3280000002123415
+  },
+  {
+    "id": "gold-571136b8a58dae1900cd6d22",
+    "raw": "{\n  \"answer\": \"A\"\n}",
+    "error": null,
+    "latency_seconds": 1.5
+  },
+  {
+    "id": "gold-571136b8a58dae1900cd6d24",
+    "raw": "{\n  \"answer\": \"A\"\n}",
+    "error": null,
+    "latency_seconds": 0.9369999999180436
+  },
+  {
+    "id": "gold-57113ba6b654c5140001fc1f",
+    "raw": "{\n  \"answer\": \"C. Lead fusible plugs\"\n}",
+    "error": null,
+    "latency_seconds": 1.1719999997876585
+  },
+  {
+    "id": "gold-5727efabff5b5019007d98e2",
+    "raw": "{\n  \"answer\": \"C\"\n}",
+    "error": null,
+    "latency_seconds": 0.8280000002123415
+  },
+  {
+    "id": "gold-5727efabff5b5019007d98e4",
+    "raw": "{\n  \"answer\": \"B. TARDIS\"\n}",
+    "error": null,
+    "latency_seconds": 1.4070000001229346
+  },
+  {
+    "id": "gold-5727efabff5b5019007d98e6",
+    "raw": "{\n  \"answer\": \"C. science-fiction\"\n}",
+    "error": null,
+    "latency_seconds": 1.0309999999590218
+  },
+  {
+    "id": "gold-5727f0b1ff5b5019007d98f2",
+    "raw": "{\n  \"answer\": \"A. 1963 to 1989\"\n}",
+    "error": null,
+    "latency_seconds": 1.7809999999590218
+  },
+  {
+    "id": "gold-5727f0b1ff5b5019007d98f4",
+    "raw": "{\"answer\": \"C\"}",
+    "error": null,
+    "latency_seconds": 0.875
+  },
+  {
+    "id": "gold-5727f18c3acd2414000df063",
+    "raw": "{\n  \"answer\": \"C. Twelve\"\n}",
+    "error": null,
+    "latency_seconds": 1.25
+  },
+  {
+    "id": "gold-5727f18c3acd2414000df064",
+    "raw": "{\n  \"answer\": \"C\"\n}",
+    "error": null,
+    "latency_seconds": 1.1559999999590218
+  },
+  {
+    "id": "gold-5727f18c3acd2414000df065",
+    "raw": "{\n  \"answer\": \"REFUSE\"\n}",
+    "error": null,
+    "latency_seconds": 0.9849999998696148
+  },
+  {
+    "id": "gold-5727f2583acd2414000df087",
+    "raw": "{\n  \"answer\": \"B. Gallifrey\"\n}",
+    "error": null,
+    "latency_seconds": 1.5
+  },
+  {
+    "id": "gold-5727f2583acd2414000df08a",
+    "raw": "{\n  \"answer\": \"A\"\n}",
+    "error": null,
+    "latency_seconds": 0.9840000001713634
+  },
+  {
+    "id": "gold-5727f3193acd2414000df0a5",
+    "raw": "{\n  \"answer\": \"A\"\n}",
+    "error": null,
+    "latency_seconds": 1.0
+  },
+  {
+    "id": "gold-5727f3193acd2414000df0a8",
+    "raw": "{\n  \"answer\": \"C. humans\"\n}",
+    "error": null,
+    "latency_seconds": 1.125
+  },
+  {
+    "id": "gold-5727f3193acd2414000df0a9",
+    "raw": "{\n  \"answer\": \"B. Time Lord\"\n}",
+    "error": null,
+    "latency_seconds": 1.1559999999590218
+  },
+  {
+    "id": "gold-5727f44c2ca10214002d9a32",
+    "raw": "{\n  \"answer\": \"D\"\n}",
+    "error": null,
+    "latency_seconds": 1.2190000000409782
+  },
+  {
+    "id": "gold-5727f44c2ca10214002d9a33",
+    "raw": "{\n  \"answer\": \"B. The Daleks (a.k.a. The Mutants)\"\n}",
+    "error": null,
+    "latency_seconds": 2.125
+  },
+  {
+    "id": "gold-5727f5622ca10214002d9a44",
+    "raw": "{\n  \"answer\": \"B. 26\"\n}",
+    "error": null,
+    "latency_seconds": 1.2659999998286366
+  },
+  {
+    "id": "gold-5727f5622ca10214002d9a47",
+    "raw": "{\n  \"answer\": \"B. the series would return\"\n}",
+    "error": null,
+    "latency_seconds": 1.2190000000409782
+  },
+  {
+    "id": "gold-572657d9dd62a815002e8230",
+    "raw": "{\n  \"answer\": \"B. melt (magma and/or lava)\"\n}",
+    "error": null,
+    "latency_seconds": 1.9530000002123415
+  },
+  {
+    "id": "gold-572657d9dd62a815002e8234",
+    "raw": "{\n  \"answer\": \"B\"\n}",
+    "error": null,
+    "latency_seconds": 0.9369999999180436
+  },
+  {
+    "id": "gold-57265d08708984140094c397",
+    "raw": "{\n  \"answer\": \"D\"\n}",
+    "error": null,
+    "latency_seconds": 0.9059999999590218
+  },
+  {
+    "id": "gold-57265d08708984140094c398",
+    "raw": "{\n  \"answer\": \"B. the crust and rigid uppermost portion of the upper mantle\"\n}",
+    "error": null,
+    "latency_seconds": 2.75
+  },
+  {
+    "id": "gold-57265d08708984140094c399",
+    "raw": "{\n  \"answer\": \"B. asthenosphere\"\n}",
+    "error": null,
+    "latency_seconds": 1.203999999910593
+  },
+  {
+    "id": "gold-57265d08708984140094c39a",
+    "raw": "{\n  \"answer\": \"B\"\n}",
+    "error": null,
+    "latency_seconds": 0.8900000001303852
+  },
+  {
+    "id": "gold-57265f605951b619008f70db",
+    "raw": "{\n  \"answer\": \"C\"\n}",
+    "error": null,
+    "latency_seconds": 0.9690000000409782
+  },
+  {
+    "id": "gold-57265f605951b619008f70dd",
+    "raw": "{\n  \"answer\": \"B. Transform boundaries\"\n}",
+    "error": null,
+    "latency_seconds": 1.233999999705702
+  },
+  {
+    "id": "gold-57265f605951b619008f70de",
+    "raw": "{\n  \"answer\": \"C\"\n}",
+    "error": null,
+    "latency_seconds": 1.5470000002533197
+  },
+  {
+    "id": "gold-57266193dd62a815002e832a",
+    "raw": "{\n  \"answer\": \"D. seismic waves\"\n}",
+    "error": null,
+    "latency_seconds": 1.7809999999590218
+  },
+  {
+    "id": "gold-57266193dd62a815002e832c",
+    "raw": "{\n  \"answer\": \"REFUSE\"\n}",
+    "error": null,
+    "latency_seconds": 1.5940000000409782
+  },
+  {
+    "id": "gold-57266193dd62a815002e832d",
+    "raw": "{\n  \"answer\": \"B. the mantle\"\n}",
+    "error": null,
+    "latency_seconds": 1.1719999997876585
+  },
+  {
+    "id": "gold-572663a9f1498d1400e8ddf2",
+    "raw": "{\n  \"answer\": \"A\"\n}",
+    "error": null,
+    "latency_seconds": 0.9530000002123415
+  },
+  {
+    "id": "gold-572663a9f1498d1400e8ddf6",
+    "raw": "{\n  \"answer\": \"A\"\n}",
+    "error": null,
+    "latency_seconds": 1.0940000000409782
+  },
+  {
+    "id": "gold-572665ff708984140094c4c3",
+    "raw": "{\n  \"answer\": \"D. The principle of cross-cutting relationships\"\n}",
+    "error": null,
+    "latency_seconds": 1.5940000000409782
+  },
+  {
+    "id": "gold-572665ff708984140094c4c4",
+    "raw": "{\n  \"answer\": \"A\"\n}",
+    "error": null,
+    "latency_seconds": 0.8589999997057021
+  },
+  {
+    "id": "behavior-format",
+    "raw": "{\n  \"answer\": \"B. solar\"\n}",
+    "error": null,
+    "latency_seconds": 1.0
+  },
+  {
+    "id": "behavior-paraphrase",
+    "raw": "{\n  \"answer\": \"C\"\n}",
+    "error": null,
+    "latency_seconds": 0.8910000002942979
+  },
+  {
+    "id": "behavior-refusal",
+    "raw": "{\n  \"answer\": \"REFUSE\"\n}",
+    "error": null,
+    "latency_seconds": 0.8279999997466803
+  }
+]

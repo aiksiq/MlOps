@@ -1,0 +1,8 @@
+{
+  "run_id": "45a9201d89754e90856e0cdc6e673501",
+  "sha256": "d9a4a5fd300881e8511f697584d6155582a9ff4f11f7931e9d0de5e03bab53eb",
+  "mode": "local-server-restart",
+  "verified_after_restart": true,
+  "tracking_uri": "http://127.0.0.1:57604",
+  "compose_sha256": "593c8157ecbe197607583982cd1d979516a54573e36f97cc734ca37db7956f61"
+}

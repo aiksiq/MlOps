@@ -1,0 +1,10 @@
+{
+  "golden": "data/eval/golden.jsonl",
+  "training_index": "data/eval/training-index.jsonl",
+  "behavioral": "data/eval/behavioral.jsonl",
+  "critical_slices": ["Steam_engine", "Doctor_Who", "Geology"],
+  "seed": 42,
+  "system": "Answer using only the supplied passage. Select one listed label. If the passage does not support an answer, select REFUSE. Return only a JSON object with the single string field answer.",
+  "max_new_tokens": 32,
+  "enable_thinking": false
+}

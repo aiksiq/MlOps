@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+data/*
+!data/
+!data/.gitignore
+!data/eval.dvc
+!data/tokenized.dvc
+models/
+metrics/
+mlruns/
+mlartifacts/
+*.log
+.DS_Store

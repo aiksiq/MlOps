@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "n": 50,
+  "baseline_accuracy": 0.4,
+  "candidate_accuracy": 0.82,
+  "baseline_format_rate": 0.44,
+  "candidate_format_rate": 0.84,
+  "critical_slices": {
+    "Steam_engine": {
+      "baseline_accuracy": 0.35294117647058826,
+      "candidate_accuracy": 0.7647058823529411,
+      "n": 17
+    },
+    "Doctor_Who": {
+      "baseline_accuracy": 0.35294117647058826,
+      "candidate_accuracy": 0.8235294117647058,
+      "n": 17
+    },
+    "Geology": {
+      "baseline_accuracy": 0.5,
+      "candidate_accuracy": 0.875,
+      "n": 16
+    }
+  },
+  "behavioral_passed": 3
+}
