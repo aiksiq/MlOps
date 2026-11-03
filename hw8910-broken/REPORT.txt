@@ -4,8 +4,8 @@
    Проект: hw8910-broken; Python 3.12; Windows x64; модельный smoke/замер — CPU.
    Исходный сломанный стенд сохранён отдельным commit:
    7df7413f0af919052936257f2eaf66477f4adefc.
-   Исправления находятся в отдельном последующем commit; его hash указан в
-   defects.csv после фиксации кода.
+   Исправления находятся в отдельном commit:
+   9d1f6713f9f17bd64efc5e82cb9093501cd9c406; hash указан и в defects.csv.
    Быстрые API-зависимости закреплены в requirements-fast.txt, Prefect — в
    requirements-orchestration.txt, модельные зависимости отдельно в
    requirements-model.txt. Реальная модель использует имеющийся артефакт и
