@@ -1,0 +1,31 @@
+[
+  {
+    "scenario": "report-incomplete.json",
+    "exit_code": 1,
+    "accepted_sha256_before": "b450a01d47e17b3b49be2620b8d16f20621becf55c91a516458ecd063c062a44",
+    "accepted_sha256_after": "b450a01d47e17b3b49be2620b8d16f20621becf55c91a516458ecd063c062a44",
+    "unchanged": true
+  },
+  {
+    "scenario": "report-reject.json",
+    "exit_code": 1,
+    "accepted_sha256_before": "b450a01d47e17b3b49be2620b8d16f20621becf55c91a516458ecd063c062a44",
+    "accepted_sha256_after": "b450a01d47e17b3b49be2620b8d16f20621becf55c91a516458ecd063c062a44",
+    "unchanged": true
+  },
+  {
+    "scenario": "report-A.json",
+    "exit_code": 1,
+    "accepted_sha256_before": "b450a01d47e17b3b49be2620b8d16f20621becf55c91a516458ecd063c062a44",
+    "accepted_sha256_after": "b450a01d47e17b3b49be2620b8d16f20621becf55c91a516458ecd063c062a44",
+    "unchanged": true
+  },
+  {
+    "scenario": "mocked os.replace failure",
+    "error": "injected disk replacement failure",
+    "accepted_sha256_before": "b450a01d47e17b3b49be2620b8d16f20621becf55c91a516458ecd063c062a44",
+    "accepted_sha256_after": "b450a01d47e17b3b49be2620b8d16f20621becf55c91a516458ecd063c062a44",
+    "unchanged": true,
+    "temporary_files_remaining": 0
+  }
+]

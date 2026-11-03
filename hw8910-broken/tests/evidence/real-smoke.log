@@ -1,0 +1,25 @@
+{
+  "command": "api_server.py --backend model --workspace .release --port 18091 --warmup-seconds 1",
+  "device": "cpu",
+  "health": [
+    200,
+    {
+      "alive": true,
+      "backend": "transformers"
+    }
+  ],
+  "ready": [
+    200,
+    {
+      "ready": true
+    }
+  ],
+  "status": 200,
+  "model_id": "my-qwen-adapter/2@efa9f05aded243eeb61aa097d7a881da",
+  "runtime_sha256": "556d42abeb7ea472ec1db9e16f791cf8445eed8a4c76e0afeb1e989e513b0c17",
+  "request_id": "c2f50ec9-919b-40fb-97a2-390910b9409b",
+  "output_tokens": 7,
+  "generation_seconds": 5.170089800027199,
+  "wall_seconds": 15.595122000027914,
+  "answer": "{\"answer\": \"B\"}"
+}

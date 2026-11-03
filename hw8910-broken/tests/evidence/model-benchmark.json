@@ -1,0 +1,116 @@
+{
+  "model_id": "my-qwen-adapter/2@efa9f05aded243eeb61aa097d7a881da",
+  "runtime_sha256": "556d42abeb7ea472ec1db9e16f791cf8445eed8a4c76e0afeb1e989e513b0c17",
+  "backend": "model",
+  "device": "cpu",
+  "prompt_sha256": "00dc9e868f55fd5f56a350a4da72fef51f017527bc3ab30a9e981b194ba413a5",
+  "max_new_tokens": 32,
+  "warmup_seconds": 11.219802000035997,
+  "warmup_request": {
+    "status": 200,
+    "latency_seconds": 5.9488904000027105,
+    "server_generation_seconds": 5.946291400003247,
+    "output_tokens": 7,
+    "request_id": "c3dcccec-e796-4b5b-b28f-905781458d34",
+    "raw_answer": "{\"answer\": \"B\"}",
+    "error": null
+  },
+  "batches": [
+    {
+      "concurrency": 1,
+      "requests": [
+        {
+          "status": 200,
+          "latency_seconds": 6.101094499987084,
+          "server_generation_seconds": 6.09850030002417,
+          "output_tokens": 7,
+          "request_id": "1a210991-8c2f-4484-b25d-4a8e602b72fe",
+          "raw_answer": "{\"answer\": \"B\"}",
+          "error": null
+        },
+        {
+          "status": 200,
+          "latency_seconds": 6.4143013000139035,
+          "server_generation_seconds": 6.411584399989806,
+          "output_tokens": 7,
+          "request_id": "574fec96-8571-4bc1-8741-dd40c1bbba65",
+          "raw_answer": "{\"answer\": \"B\"}",
+          "error": null
+        },
+        {
+          "status": 200,
+          "latency_seconds": 6.146677299984731,
+          "server_generation_seconds": 6.144191799976397,
+          "output_tokens": 7,
+          "request_id": "e89d6a68-0930-4262-a63e-77a4583b62e8",
+          "raw_answer": "{\"answer\": \"B\"}",
+          "error": null
+        },
+        {
+          "status": 200,
+          "latency_seconds": 6.169332099962048,
+          "server_generation_seconds": 6.166372000006959,
+          "output_tokens": 7,
+          "request_id": "4d3cb352-93ef-4f3b-badd-91bb0c01e51a",
+          "raw_answer": "{\"answer\": \"B\"}",
+          "error": null
+        }
+      ],
+      "errors": 0,
+      "batch_seconds": 24.832749299996067,
+      "requests_per_second": 0.16107761374616034,
+      "average_latency_seconds": 6.207851299986942,
+      "max_latency_seconds": 6.4143013000139035
+    },
+    {
+      "concurrency": 2,
+      "requests": [
+        {
+          "status": 200,
+          "latency_seconds": 6.348748299991712,
+          "server_generation_seconds": 6.344477600010578,
+          "output_tokens": 7,
+          "request_id": "fbc5ef17-e7f1-49bc-93e6-7d97e5c25634",
+          "raw_answer": "{\"answer\": \"B\"}",
+          "error": null
+        },
+        {
+          "status": 200,
+          "latency_seconds": 12.785234200011473,
+          "server_generation_seconds": 12.78110599995125,
+          "output_tokens": 7,
+          "request_id": "fecdf839-1e69-47e8-a19e-f39a2a3d314f",
+          "raw_answer": "{\"answer\": \"B\"}",
+          "error": null
+        },
+        {
+          "status": 200,
+          "latency_seconds": 13.058266400010325,
+          "server_generation_seconds": 13.053516999993008,
+          "output_tokens": 7,
+          "request_id": "e0eb065a-141a-4be5-8a6e-feb0ff39ec92",
+          "raw_answer": "{\"answer\": \"B\"}",
+          "error": null
+        },
+        {
+          "status": 200,
+          "latency_seconds": 13.26054629997816,
+          "server_generation_seconds": 13.255823500046972,
+          "output_tokens": 7,
+          "request_id": "0ccbb99a-6a3a-4e07-a046-4ee83e1963ca",
+          "raw_answer": "{\"answer\": \"B\"}",
+          "error": null
+        }
+      ],
+      "errors": 0,
+      "batch_seconds": 26.046800999960396,
+      "requests_per_second": 0.15356972243946893,
+      "average_latency_seconds": 11.363198799997917,
+      "max_latency_seconds": 13.26054629997816
+    }
+  ],
+  "limitations": [
+    "Local single-process measurement; it is not a production capacity test.",
+    "One model instance serializes generation; concurrent latency includes queueing."
+  ]
+}

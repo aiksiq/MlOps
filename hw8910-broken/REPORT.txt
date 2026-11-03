@@ -1,23 +1,113 @@
-Отчёт ДЗ 8+9+10 (заполнить своими измерениями)
-1. Репозиторий, исходный/исправленный commits, устройство, зависимости, команды.
-   defects.csv: семь независимых причин, воспроизведение, исправление, имя теста.
-   Минимум шесть новых интеграционных тестов: логи до/после, три HTTP и два subprocess.
-2. Что переиспользовано из 6+7: training run, evaluation run, baseline, candidate.
-3. Граф задач. Входы/выходы. Состав ключа кеша. Где возможен повтор, где запрещён.
-4. Успешный проход; сбой после подготовки; восстановление; изменение входа.
-   Для каждого: команда, exit code, run ID/журнал, что исполнено/взято из кеша.
-5. Gate: полный отчёт, связи версий и хешей, решение. Отрицательные проверки:
-   неполный отчёт; несовпадающая версия; отказ; NaN; ошибка записи.
-   accepted.json до/после (SHA-256). Отдельно: почему PASS из фикстуры не оценка модели.
-6. Быстрые тесты: успешный лог и намеренное падение с ненулевым exit code.
-   CI локальный или GitHub? Таблица «новый код / данные / адаптер → какие действия».
-7. API: health/ready, прогрев, успешный реальный ответ, model_id, runtime_sha256,
-   request_id, выходные токены, длительности; неправильный запрос до генерации.
-8. Нагрузка: одинаковые запросы, лимиты и прогрев; 8 запросов при concurrency=1
-   и ещё 8 при concurrency=2. Сырые строки, ошибки, время пакета, req/s,
-   средняя и максимальная задержка, объяснение очереди. На медленном CPU — 4+4.
-9. STUB-опыт A → B → A с загрузкой/перезапуском. Фактический model_id.
-   Повтор выпуска после сбоя между указателем и журналом: нет двойной публикации.
-   Реальный smoke своей модели выполняется отдельно от STUB-опытов.
-10. Ограничения: маленькая выборка, последовательный backend, что не измерялось.
-11. Ссылка на одно видео 5–8 минут.
+ДЗ 8+9+10 — отчёт о расследовании и выпуске
+
+1. Репозиторий, commits, устройство, зависимости
+   Проект: hw8910-broken; Python 3.12; Windows x64; модельный smoke/замер — CPU.
+   Исходный сломанный стенд сохранён отдельным commit:
+   7df7413f0af919052936257f2eaf66477f4adefc.
+   Исправления находятся в отдельном последующем commit; его hash указан в
+   defects.csv после фиксации кода.
+   Быстрые API-зависимости закреплены в requirements-fast.txt, Prefect — в
+   requirements-orchestration.txt, модельные зависимости отдельно в
+   requirements-model.txt. Реальная модель использует имеющийся артефакт и
+   cache базы; новый sweep и копирование весов не выполнялись.
+
+2. Что переиспользовано из ДЗ 6+7
+   Training/MLflow candidate run: efa9f05aded243eeb61aa097d7a881da,
+   registered model my-qwen-adapter, version 2. Baseline:
+   Qwen/Qwen3-0.6B, revision c1899de289a04d12100db370d81485cdf75e47ca.
+   Сохранённые candidate/baseline outputs повторно оценены функциями
+   evaluation.score и evaluation.quality_gate; качество сверено с сырыми
+   ответами, а результат — с сохранённым full-gate report. Sweep не запускался.
+   Evaluation run: 786096f65c4b49b4b2fc966ecb135494.
+
+3. Граф задач, cache и повторы
+   prepare-data -> validate-and-publish. Ключ подготовки —
+   SHA256 канонического JSON {data_sha256, config}; config содержит все
+   настройки подготовки. Идентификатор результата подготовки не равен run ID.
+   Prefect task кэшируется по этому ключу с persist_result=True; независимый
+   content-addressed кеш на диске позволяет восстановиться между процессами.
+   Полный release flow повторно сверяет отчёты, hashes, raw outputs и gate.
+   Публикация атомарная; журнал — уникальные идентификаторы manifest+report.
+   Повтор одной версии не дублирует запись; повтор после сбоя между указателем
+   и журналом восстанавливает журнал. Режим рассчитан на одного писателя.
+
+4. Успешный запуск, сбой, восстановление, смена входа
+   Синтетические init/run выполнялись в отдельных временных workspace.
+   tests/evidence/prefect-recovery.log: failure после prepare завершился с
+   exit 1; следующий отдельный Prefect process взял задачу из состояния
+   Cached и опубликовал fixture-B. В publications.jsonl одна строка.
+   Тест subprocess дополнительно меняет байты input.txt и max_length при том
+   же пути: обе правки приводят к PREPARED, а не к CACHE_HIT.
+
+5. Gate и отрицательные проверки
+   Full evaluation: n=50; baseline accuracy 0.40, format_rate 0.44;
+   candidate accuracy 0.82, format_rate 0.84. Все три critical slices прошли:
+   Steam_engine 0.3529 -> 0.7647 (n=17);
+   Doctor_Who 0.3529 -> 0.8235 (n=17);
+   Geology 0.5000 -> 0.8750 (n=16). Behavioral: 3/3.
+   Полные отчёты и raw outputs, включая SHA-256, скопированы в локальный
+   .release-final/evidence; manifest — .release-final/accepted.json.
+   Отказы report-incomplete.json, report-reject.json и report-A.json, а также
+   mock ошибки os.replace не меняют указатель. Для каждого опыта SHA-256 до
+   и после равен b450a01d47e17b3b49be2620b8d16f20621becf55c91a516458ecd063c062a44.
+   При ошибке замены временный файл удалён. Детали — tests/evidence/rejections.json.
+   Значение PASS в исходной synthetic fixture ничего не доказывает о качестве
+   модели; это только контрактная фикстура. Реальный gate основан на результатах
+   существующей оценки ДЗ 6+7.
+
+6. Тесты и CI
+   До исправлений: 21 тест, 67 failures, exit 1 — tests/evidence/before-fixes.log.
+   После исправлений: compileall exit 0; 26 тестов OK — tests/evidence/after-fixes.log.
+   Новые integration tests включают 3 HTTP-сценария и отдельные subprocess
+   повторы/восстановление; плюс FastAPI и хеширование файлов адаптера.
+   ci.example.yml — локально проверяемый шаблон CI с быстрыми зависимостями.
+   Удалённый Actions run не выполнялся; защита merge не заявляется.
+
+   Новый код/сигнал                 Действие до выпуска
+   -------------------------------  -------------------------------------------
+   input bytes / prepare config     новый content cache key и повтор подготовки
+   golden / protocol / eval code    baseline и candidate заново оценить, gate
+   raw outputs / quality report    пересчитать score и full quality_gate
+   adapter files / adapter config  пересчитать file hashes до публикации/загрузки
+   runtime generation settings     новый report; не править runtime hash вручную
+   accepted pointer                 новый процесс API для фактической загрузки
+
+7. API
+   Реальный FastAPI запуск через api_server.py --backend model; process-local
+   accepted manifest загрузил my-qwen-adapter/2@efa9f05aded243eeb61aa097d7a881da.
+   /health=200; /ready=200 после warmup; валидный реальный ответ:
+   {"answer": "B"}, output_tokens=7, request_id записан в real-smoke.log,
+   generation_seconds=5.1701. runtime_sha256 совпал с accepted.json.
+   Неправильные запросы возвращают 4xx до вызова backend; startup и model file
+   hashes проверены. Debug-маршрут FastAPI выключен по умолчанию.
+
+8. Небольшой замер
+   Один и тот же golden prompt, max_new_tokens=32; прогрев — один исключённый
+   запрос. Тест CPU, один процесс, отдельные серии 4 запроса при concurrency=1
+   и 4 при concurrency=2; ошибок 0.
+   concurrency  batch seconds  req/s   average latency  max latency
+   1            24.8327        0.1611  6.2079 s        6.4143 s
+   2            26.0468        0.1536  11.3632 s       13.2605 s
+   Начало API вместе с загрузкой: 11.2198 s; прогревочный запрос: 5.9489 s.
+   Все ответы — {"answer": "B"}, ошибок 0; сырая таблица запросов и ответы —
+   tests/evidence/model-benchmark.json. Backend сериализует вызовы одной модели:
+   concurrency=2 добавляет ожидание в очереди, не даёт ускорения. Измерение
+   локальное, не production capacity test; память, GPU и устойчивость под
+   длительной нагрузкой не измерялись.
+
+9. A -> B -> A и повторы после сбоя
+   В тесте stub: API, запущенный на A, продолжает отвечать A после смены
+   accepted.json на B; после restart отвечает B; после возврата указателя на A
+   и restart подтверждает A. Повтор B после рестарта не дублирует событие.
+   Реальный API smoke отдельно выполнен на ранее принятом model run выше.
+
+10. Ограничения
+   50 вопросов reused для разработки, а не независимый аудит; distractors и
+   семантическая утечка ограничены проверками предыдущего ДЗ. Модель мала,
+   работа шла на CPU; backend последовательно обрабатывает запросы. Не
+   измерялись GPU, несколько workers, распределённый запуск, registry alias
+   mutation, remote CI и production persistence.
+
+11. Видео
+   Ссылка не предоставлена: запись длительностью 5–8 минут должен добавить
+   автор сдачи. Все локальные команды, отчёты и ограничения перечислены выше.

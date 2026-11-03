@@ -1,0 +1,686 @@
+commit: 7df7413f0af919052936257f2eaf66477f4adefc
+command: C:\Users\aiksi\AppData\Local\Programs\Python\Python312\python.exe -m unittest discover -s tests -v
+exit_code: 1
+
+PREPARED 227e52c31e3879b4e574d0ad9a225877aa90a0064c5acb021f7f4e43783a1e07
+test_http_health_ready_and_generation_wait_for_warmup (test_integration.HomeworkProcessIntegrationTests.test_http_health_ready_and_generation_wait_for_warmup) ... FAIL
+test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) ...
+  test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) (payload={'prompt': ''}) ... FAIL
+  test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) (payload={'prompt': 'hello', 'max_new_tokens': 0}) ... FAIL
+  test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) (payload={'prompt': 'hello', 'max_new_tokens': 100000}) ... FAIL
+  test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) (payload={'prompt': 'hello', 'max_new_tokens': '4'}) ... FAIL
+test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) ... FAIL
+test_http_response_reports_loaded_version_until_managed_restart (test_integration.HomeworkProcessIntegrationTests.test_http_response_reports_loaded_version_until_managed_restart) ... FAIL
+test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer (test_integration.HomeworkProcessIntegrationTests.test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer) ...
+  test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer (test_integration.HomeworkProcessIntegrationTests.test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer) (report='report-incomplete.json') ... FAIL
+  test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer (test_integration.HomeworkProcessIntegrationTests.test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer) (report='report-reject.json') ... FAIL
+  test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer (test_integration.HomeworkProcessIntegrationTests.test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer) (report='report-A.json') ... FAIL
+test_init_refuses_overwrite_existing_workspace (test_integration.HomeworkProcessIntegrationTests.test_init_refuses_overwrite_existing_workspace) ... ok
+test_new_process_repairs_journal_after_pointer_was_replaced (test_integration.HomeworkProcessIntegrationTests.test_new_process_repairs_journal_after_pointer_was_replaced) ... FAIL
+test_subprocess_recovery_reuses_content_cache_and_invalidates_inputs (test_integration.HomeworkProcessIntegrationTests.test_subprocess_recovery_reuses_content_cache_and_invalidates_inputs) ... FAIL
+test_subprocess_repeated_publication_is_idempotent_after_restart (test_integration.HomeworkProcessIntegrationTests.test_subprocess_repeated_publication_is_idempotent_after_restart) ... FAIL
+test_changed_bytes_at_same_path_invalidate_cache (test_release.ReleaseContractTests.test_changed_bytes_at_same_path_invalidate_cache) ... FAIL
+test_complete_bound_report_allowed (test_release.ReleaseContractTests.test_complete_bound_report_allowed) ... ok
+test_every_preparation_setting_invalidates_cache (test_release.ReleaseContractTests.test_every_preparation_setting_invalidates_cache) ...
+  test_every_preparation_setting_invalidates_cache (test_release.ReleaseContractTests.test_every_preparation_setting_invalidates_cache) (key='tokenizer_revision') ... FAIL
+  test_every_preparation_setting_invalidates_cache (test_release.ReleaseContractTests.test_every_preparation_setting_invalidates_cache) (key='template_sha256') ... FAIL
+  test_every_preparation_setting_invalidates_cache (test_release.ReleaseContractTests.test_every_preparation_setting_invalidates_cache) (key='max_length') ... FAIL
+  test_every_preparation_setting_invalidates_cache (test_release.ReleaseContractTests.test_every_preparation_setting_invalidates_cache) (key='code_revision') ... FAIL
+test_failed_atomic_replace_preserves_previous_bytes (test_release.ReleaseContractTests.test_failed_atomic_replace_preserves_previous_bytes) ... FAIL
+test_incomplete_false_and_truthy_string_rejected (test_release.ReleaseContractTests.test_incomplete_false_and_truthy_string_rejected) ...
+  test_incomplete_false_and_truthy_string_rejected (test_release.ReleaseContractTests.test_incomplete_false_and_truthy_string_rejected) (key='status', value='failed') ... FAIL
+  test_incomplete_false_and_truthy_string_rejected (test_release.ReleaseContractTests.test_incomplete_false_and_truthy_string_rejected) (key='status', value='running') ... FAIL
+  test_incomplete_false_and_truthy_string_rejected (test_release.ReleaseContractTests.test_incomplete_false_and_truthy_string_rejected) (key='passed', value='true') ... FAIL
+  test_incomplete_false_and_truthy_string_rejected (test_release.ReleaseContractTests.test_incomplete_false_and_truthy_string_rejected) (key='evaluation_run_id', value='') ... FAIL
+test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) ...
+  test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='schema_version') ... FAIL
+  test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='schema_version') ... FAIL
+  test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='model_sha256') ... FAIL
+  test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='model_id') ... FAIL
+  test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='artifact_uri') ... FAIL
+test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) ...
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=nan, metric='accuracy') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=nan, metric='format_rate') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=inf, metric='accuracy') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=inf, metric='format_rate') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=-0.1, metric='accuracy') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=-0.1, metric='format_rate') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=1.1, metric='accuracy') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=1.1, metric='format_rate') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=True, metric='accuracy') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=True, metric='format_rate') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value='0.8', metric='accuracy') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value='0.8', metric='format_rate') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=None, metric='accuracy') ... FAIL
+  test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=None, metric='format_rate') ... FAIL
+test_key_ignores_path_and_mapping_order (test_release.ReleaseContractTests.test_key_ignores_path_and_mapping_order) ... FAIL
+test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) ...
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='schema_version') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='model_id') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='model_sha256') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='protocol_sha256') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='golden_sha256') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='runtime_sha256') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='runtime') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='artifact_uri') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='status') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='evaluation_run_id') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='model_id') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='model_sha256') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='protocol_sha256') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='golden_sha256') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='runtime_sha256') ... FAIL
+  test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='metrics') ... FAIL
+test_publish_and_repeat (test_release.ReleaseContractTests.test_publish_and_repeat) ... ok
+test_rejection_preserves_previous_bytes (test_release.ReleaseContractTests.test_rejection_preserves_previous_bytes) ... ok
+test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) ...
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='model_id') ... FAIL
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='model_sha256') ... FAIL
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='protocol_sha256') ... FAIL
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='golden_sha256') ... FAIL
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='runtime_sha256') ... FAIL
+test_runtime_change_with_stale_hash_rejected (test_release.ReleaseContractTests.test_runtime_change_with_stale_hash_rejected) ...
+  test_runtime_change_with_stale_hash_rejected (test_release.ReleaseContractTests.test_runtime_change_with_stale_hash_rejected) (key='dtype') ... FAIL
+  test_runtime_change_with_stale_hash_rejected (test_release.ReleaseContractTests.test_runtime_change_with_stale_hash_rejected) (key='template_sha256') ... FAIL
+  test_runtime_change_with_stale_hash_rejected (test_release.ReleaseContractTests.test_runtime_change_with_stale_hash_rejected) (key='generation') ... FAIL
+
+======================================================================
+FAIL: test_http_health_ready_and_generation_wait_for_warmup (test_integration.HomeworkProcessIntegrationTests.test_http_health_ready_and_generation_wait_for_warmup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 206, in test_http_health_ready_and_generation_wait_for_warmup
+    self.assertEqual(_request(base + "/ready")[0], 503)
+AssertionError: 200 != 503
+
+======================================================================
+FAIL: test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) (payload={'prompt': ''})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 228, in test_http_invalid_requests_never_call_backend
+    self.assertGreaterEqual(_request(base + "/generate", payload)[0], 400)
+AssertionError: 200 not greater than or equal to 400
+
+======================================================================
+FAIL: test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) (payload={'prompt': 'hello', 'max_new_tokens': 0})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 228, in test_http_invalid_requests_never_call_backend
+    self.assertGreaterEqual(_request(base + "/generate", payload)[0], 400)
+AssertionError: 200 not greater than or equal to 400
+
+======================================================================
+FAIL: test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) (payload={'prompt': 'hello', 'max_new_tokens': 100000})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 228, in test_http_invalid_requests_never_call_backend
+    self.assertGreaterEqual(_request(base + "/generate", payload)[0], 400)
+AssertionError: 200 not greater than or equal to 400
+
+======================================================================
+FAIL: test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend) (payload={'prompt': 'hello', 'max_new_tokens': '4'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 228, in test_http_invalid_requests_never_call_backend
+    self.assertGreaterEqual(_request(base + "/generate", payload)[0], 400)
+AssertionError: 200 not greater than or equal to 400
+
+======================================================================
+FAIL: test_http_invalid_requests_never_call_backend (test_integration.HomeworkProcessIntegrationTests.test_http_invalid_requests_never_call_backend)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 234, in test_http_invalid_requests_never_call_backend
+    self.assertEqual(_request(base + "/debug")[1]["calls"], 1)
+AssertionError: 5 != 1
+
+======================================================================
+FAIL: test_http_response_reports_loaded_version_until_managed_restart (test_integration.HomeworkProcessIntegrationTests.test_http_response_reports_loaded_version_until_managed_restart)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 245, in test_http_response_reports_loaded_version_until_managed_restart
+    self.assertEqual(response["model_id"], "fixture-A")
+AssertionError: 'fixture-B' != 'fixture-A'
+- fixture-B
+?         ^
++ fixture-A
+?         ^
+
+
+======================================================================
+FAIL: test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer (test_integration.HomeworkProcessIntegrationTests.test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer) (report='report-incomplete.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 150, in test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer
+    self.assertNotEqual(result.returncode, 0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer (test_integration.HomeworkProcessIntegrationTests.test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer) (report='report-reject.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 151, in test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer
+    self.assertEqual(
+AssertionError: b'{\r[46 chars]ture-B",\r\n  "artifact_uri": "model-B.txt",\r[852 chars]r\n}' != b'{\r[46 chars]ture-A",\r\n  "artifact_uri": "model-A.txt",\r[852 chars]r\n}'
+
+======================================================================
+FAIL: test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer (test_integration.HomeworkProcessIntegrationTests.test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer) (report='report-A.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 150, in test_incomplete_rejected_and_foreign_reports_preserve_accepted_pointer
+    self.assertNotEqual(result.returncode, 0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_new_process_repairs_journal_after_pointer_was_replaced (test_integration.HomeworkProcessIntegrationTests.test_new_process_repairs_journal_after_pointer_was_replaced)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 133, in test_new_process_repairs_journal_after_pointer_was_replaced
+    self.assertEqual(len(events), 1)
+AssertionError: 2 != 1
+
+======================================================================
+FAIL: test_subprocess_recovery_reuses_content_cache_and_invalidates_inputs (test_integration.HomeworkProcessIntegrationTests.test_subprocess_recovery_reuses_content_cache_and_invalidates_inputs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 86, in test_subprocess_recovery_reuses_content_cache_and_invalidates_inputs
+    self.assertIn("PREPARED", changed_data.stdout)
+AssertionError: 'PREPARED' not found in 'CACHE_HIT 227e52c31e3879b4e574d0ad9a225877aa90a0064c5acb021f7f4e43783a1e07\nPUBLISHED fixture-B\n'
+
+======================================================================
+FAIL: test_subprocess_repeated_publication_is_idempotent_after_restart (test_integration.HomeworkProcessIntegrationTests.test_subprocess_repeated_publication_is_idempotent_after_restart)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_integration.py", line 102, in test_subprocess_repeated_publication_is_idempotent_after_restart
+    self.assertIn("ALREADY_PUBLISHED fixture-B", second.stdout)
+AssertionError: 'ALREADY_PUBLISHED fixture-B' not found in 'CACHE_HIT 227e52c31e3879b4e574d0ad9a225877aa90a0064c5acb021f7f4e43783a1e07\nPUBLISHED fixture-B\n'
+
+======================================================================
+FAIL: test_changed_bytes_at_same_path_invalidate_cache (test_release.ReleaseContractTests.test_changed_bytes_at_same_path_invalidate_cache)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 42, in test_changed_bytes_at_same_path_invalidate_cache
+    self.assertNotEqual(old,release.cache_key(self.data,self.config))
+AssertionError: '82bad6017bcabf507e96e5d6ad2ed8c53ad75ef1084321f18104c0359c42244b' == '82bad6017bcabf507e96e5d6ad2ed8c53ad75ef1084321f18104c0359c42244b'
+
+======================================================================
+FAIL: test_every_preparation_setting_invalidates_cache (test_release.ReleaseContractTests.test_every_preparation_setting_invalidates_cache) (key='tokenizer_revision')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 48, in test_every_preparation_setting_invalidates_cache
+    config={**self.config,key:value};self.assertNotEqual(old,release.cache_key(self.data,config))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '3224122adcb5c240d82cdc812d69069a797bc7070db50e27429660a40f5e1d03' == '3224122adcb5c240d82cdc812d69069a797bc7070db50e27429660a40f5e1d03'
+
+======================================================================
+FAIL: test_every_preparation_setting_invalidates_cache (test_release.ReleaseContractTests.test_every_preparation_setting_invalidates_cache) (key='template_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 48, in test_every_preparation_setting_invalidates_cache
+    config={**self.config,key:value};self.assertNotEqual(old,release.cache_key(self.data,config))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '3224122adcb5c240d82cdc812d69069a797bc7070db50e27429660a40f5e1d03' == '3224122adcb5c240d82cdc812d69069a797bc7070db50e27429660a40f5e1d03'
+
+======================================================================
+FAIL: test_every_preparation_setting_invalidates_cache (test_release.ReleaseContractTests.test_every_preparation_setting_invalidates_cache) (key='max_length')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 48, in test_every_preparation_setting_invalidates_cache
+    config={**self.config,key:value};self.assertNotEqual(old,release.cache_key(self.data,config))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '3224122adcb5c240d82cdc812d69069a797bc7070db50e27429660a40f5e1d03' == '3224122adcb5c240d82cdc812d69069a797bc7070db50e27429660a40f5e1d03'
+
+======================================================================
+FAIL: test_every_preparation_setting_invalidates_cache (test_release.ReleaseContractTests.test_every_preparation_setting_invalidates_cache) (key='code_revision')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 48, in test_every_preparation_setting_invalidates_cache
+    config={**self.config,key:value};self.assertNotEqual(old,release.cache_key(self.data,config))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '3224122adcb5c240d82cdc812d69069a797bc7070db50e27429660a40f5e1d03' == '3224122adcb5c240d82cdc812d69069a797bc7070db50e27429660a40f5e1d03'
+
+======================================================================
+FAIL: test_failed_atomic_replace_preserves_previous_bytes (test_release.ReleaseContractTests.test_failed_atomic_replace_preserves_previous_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 105, in test_failed_atomic_replace_preserves_previous_bytes
+    with self.assertRaises(OSError):release.publish(self.manifest,self.report,self.target)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: OSError not raised
+
+======================================================================
+FAIL: test_incomplete_false_and_truthy_string_rejected (test_release.ReleaseContractTests.test_incomplete_false_and_truthy_string_rejected) (key='status', value='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 57, in test_incomplete_false_and_truthy_string_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_incomplete_false_and_truthy_string_rejected (test_release.ReleaseContractTests.test_incomplete_false_and_truthy_string_rejected) (key='status', value='running')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 57, in test_incomplete_false_and_truthy_string_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_incomplete_false_and_truthy_string_rejected (test_release.ReleaseContractTests.test_incomplete_false_and_truthy_string_rejected) (key='passed', value='true')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 57, in test_incomplete_false_and_truthy_string_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_incomplete_false_and_truthy_string_rejected (test_release.ReleaseContractTests.test_incomplete_false_and_truthy_string_rejected) (key='evaluation_run_id', value='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 57, in test_incomplete_false_and_truthy_string_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='schema_version')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 90, in test_invalid_digest_and_schema_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,self.report)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='schema_version')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 90, in test_invalid_digest_and_schema_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,self.report)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='model_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 90, in test_invalid_digest_and_schema_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,self.report)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='model_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 90, in test_invalid_digest_and_schema_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,self.report)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_digest_and_schema_rejected (test_release.ReleaseContractTests.test_invalid_digest_and_schema_rejected) (key='artifact_uri')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 90, in test_invalid_digest_and_schema_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,self.report)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=nan, metric='accuracy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=nan, metric='format_rate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=inf, metric='accuracy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=inf, metric='format_rate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=-0.1, metric='accuracy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=-0.1, metric='format_rate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=1.1, metric='accuracy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=1.1, metric='format_rate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=True, metric='accuracy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=True, metric='format_rate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value='0.8', metric='accuracy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value='0.8', metric='format_rate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=None, metric='accuracy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_metric_rejected (test_release.ReleaseContractTests.test_invalid_metric_rejected) (value=None, metric='format_rate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 84, in test_invalid_metric_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_key_ignores_path_and_mapping_order (test_release.ReleaseContractTests.test_key_ignores_path_and_mapping_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 38, in test_key_ignores_path_and_mapping_order
+    self.assertEqual(key,release.cache_key(other,dict(reversed(list(self.config.items())))))
+AssertionError: '6e8bc8a3afb49726d951bffe9fe5786ce563b94d01a59b1de07dcb3171f601e0' != '57bf2c81828ae8a5f5c55ae54229b663e0ba7979f547aefc22658d7b626b838e'
+- 6e8bc8a3afb49726d951bffe9fe5786ce563b94d01a59b1de07dcb3171f601e0
++ 57bf2c81828ae8a5f5c55ae54229b663e0ba7979f547aefc22658d7b626b838e
+
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='schema_version')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='model_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='model_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='protocol_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='golden_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='runtime_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='runtime')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='manifest', key='artifact_uri')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='status')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='evaluation_run_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='model_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='model_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='protocol_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='golden_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='runtime_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_fields_rejected (test_release.ReleaseContractTests.test_missing_fields_rejected) (side='report', key='metrics')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 65, in test_missing_fields_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='model_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='model_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='protocol_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='golden_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='runtime_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_runtime_change_with_stale_hash_rejected (test_release.ReleaseContractTests.test_runtime_change_with_stale_hash_rejected) (key='dtype')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 77, in test_runtime_change_with_stale_hash_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,self.report)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_runtime_change_with_stale_hash_rejected (test_release.ReleaseContractTests.test_runtime_change_with_stale_hash_rejected) (key='template_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 77, in test_runtime_change_with_stale_hash_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,self.report)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_runtime_change_with_stale_hash_rejected (test_release.ReleaseContractTests.test_runtime_change_with_stale_hash_rejected) (key='generation')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\aiksi\AppData\Local\Temp\hw8910-baseline-kth_ms05\hw8910-broken\tests\test_release.py", line 77, in test_runtime_change_with_stale_hash_rejected
+    with self.assertRaises(ValueError):release.validate_release(m,self.report)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 21 tests in 2.781s
+
+FAILED (failures=67)

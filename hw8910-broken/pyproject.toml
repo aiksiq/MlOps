@@ -1,0 +1,26 @@
+[project]
+name = "mlops-release-homework"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[project.optional-dependencies]
+api = [
+  "click==8.5.0",
+  "fastapi==0.150.0",
+  "httpx==0.28.1",
+  "pydantic==2.14.2",
+  "starlette==1.10.0",
+  "uvicorn==0.34.0",
+]
+orchestration = ["prefect==3.9.1"]
+model = [
+  "numpy==2.3.2",
+  "peft==0.21.0",
+  "PyYAML==6.0.2",
+  "torch==2.14.0",
+  "transformers==5.17.0",
+]
+
+[tool.uv]
+package = false

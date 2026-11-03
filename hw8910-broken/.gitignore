@@ -8,3 +8,5 @@ models/
 *.bin
 *.pt
 .lab*/
+.release*/
+*.py[cod]

@@ -1,0 +1,68 @@
+﻿Independent workspace initialization
+Создан синтетический стенд: .lab-final
+init_exit_code: 0
+
+command: prefect_flow.py --workspace .lab-final run --fail-after-prepare
+18:36:35.275 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8268
+See https://www.prefect.io/docs/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+18:36:41.967 | INFO    | Flow run 'expert-rattlesnake' - Beginning flow run 'expert-rattlesnake' for flow 'release-workflow'
+18:36:42.199 | INFO    | Task run 'prepare-data-036' - Finished in state Cached(type=COMPLETED)
+18:36:43.193 | ERROR   | Flow run 'expert-rattlesnake' - Encountered exception during execution: RuntimeError('Injected failure after preparation')
+Traceback (most recent call last):
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flow_engine.py", line 1339, in run_context
+    yield self
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flow_engine.py", line 2133, in run_flow_sync
+    engine.call_flow_fn()
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flow_engine.py", line 1361, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\utilities\callables\__init__.py", line 404, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\mlops\MlOps\hw8910-broken\prefect_flow.py", line 35, in release_flow
+    raise RuntimeError("Injected failure after preparation")
+RuntimeError: Injected failure after preparation
+18:36:43.229 | INFO    | Flow run 'expert-rattlesnake' - Finished in state Failed('Flow run encountered an exception: RuntimeError: Injected failure after preparation')
+Traceback (most recent call last):
+  File "C:\mlops\MlOps\hw8910-broken\prefect_flow.py", line 80, in <module>
+    main()
+  File "C:\mlops\MlOps\hw8910-broken\prefect_flow.py", line 76, in main
+    release_flow(str(args.workspace), args.report, args.fail_after_prepare)
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flows.py", line 1887, in __call__
+    return run_flow(
+           ^^^^^^^^^
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flow_engine.py", line 2290, in run_flow
+    ret_val = run_flow_sync(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flow_engine.py", line 2135, in run_flow_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flow_engine.py", line 788, in result
+    raise self._raised
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flow_engine.py", line 1339, in run_context
+    yield self
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flow_engine.py", line 2133, in run_flow_sync
+    engine.call_flow_fn()
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\flow_engine.py", line 1361, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\mlops\MlOps\hw8910-broken\.venv\Lib\site-packages\prefect\utilities\callables\__init__.py", line 404, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\mlops\MlOps\hw8910-broken\prefect_flow.py", line 35, in release_flow
+    raise RuntimeError("Injected failure after preparation")
+RuntimeError: Injected failure after preparation
+18:36:43.250 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8268
+injected_failure_exit_code: 1
+
+command: prefect_flow.py --workspace .lab-final run
+18:36:49.871 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8631
+See https://www.prefect.io/docs/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+18:36:58.439 | INFO    | Flow run 'optimistic-eagle' - Beginning flow run 'optimistic-eagle' for flow 'release-workflow'
+18:36:58.806 | INFO    | Task run 'prepare-data-cc8' - Finished in state Cached(type=COMPLETED)
+18:36:58.821 | INFO    | Task run 'validate-and-publish-89f' - Finished in state Completed()
+18:36:59.801 | INFO    | Flow run 'optimistic-eagle' - Finished in state Completed()
+PUBLISHED fixture-B
+18:36:59.821 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8631
+retry_exit_code: 0
+publication_rows: 1
