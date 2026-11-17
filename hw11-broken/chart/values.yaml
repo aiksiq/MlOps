@@ -1,0 +1,68 @@
+replicaCount: 2
+
+image:
+  repository: hw11-simulator
+  tag: "0.1.0"
+  pullPolicy: IfNotPresent
+
+model:
+  version: sim-v1
+  backendReady: true
+
+service:
+  port: 8080
+  sessionAffinityTimeoutSeconds: 10800
+
+simulator:
+  warmupSeconds: 20
+  maxConcurrent: 1
+  maxWaiting: 8
+  queueTimeoutSeconds: 2
+  chunkCount: 6
+  chunkSeconds: 0.025
+  cacheSize: 32
+  cacheHitSeconds: 0.04
+  cacheMissSeconds: 0.16
+  cpuBurnMs: 15
+
+probes:
+  badProbes: false
+  startup:
+    periodSeconds: 2
+    failureThreshold: 40
+  readiness:
+    periodSeconds: 2
+  liveness:
+    periodSeconds: 10
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 128Mi
+  limits:
+    cpu: "1"
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 60
+  scaleDownStabilizationSeconds: 60
+
+monitoring:
+  enabled: true
+
+loadgen:
+  enabled: false
+  runId: balanced-01
+  scenario: balanced
+  affinity: false
+  durationSeconds: 120
+  totalRps: 8
+  clientCount: 4
+  concurrency: 4
+  maxNewTokens: 6
+
+terminationGracePeriodSeconds: 30
+revisionHistoryLimit: 5

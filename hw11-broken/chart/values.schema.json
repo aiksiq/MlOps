@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "replicaCount": {"type": "integer", "minimum": 2, "maximum": 3},
+    "image": {
+      "type": "object",
+      "properties": {
+        "repository": {"type": "string", "minLength": 1},
+        "tag": {"type": "string", "minLength": 1},
+        "pullPolicy": {"type": "string", "enum": ["Always", "IfNotPresent", "Never"]}
+      },
+      "required": ["repository", "tag", "pullPolicy"]
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string", "minLength": 1},
+        "backendReady": {"type": "boolean"}
+      },
+      "required": ["version", "backendReady"]
+    },
+    "simulator": {
+      "type": "object",
+      "properties": {
+        "warmupSeconds": {"type": "number", "minimum": 0},
+        "maxConcurrent": {"type": "integer", "minimum": 1},
+        "maxWaiting": {"type": "integer", "minimum": 0},
+        "queueTimeoutSeconds": {"type": "number", "minimum": 0},
+        "chunkCount": {"type": "integer", "minimum": 1},
+        "chunkSeconds": {"type": "number", "minimum": 0},
+        "cacheSize": {"type": "integer", "minimum": 0},
+        "cacheHitSeconds": {"type": "number", "minimum": 0},
+        "cacheMissSeconds": {"type": "number", "minimum": 0},
+        "cpuBurnMs": {"type": "number", "minimum": 0}
+      },
+      "required": [
+        "warmupSeconds", "maxConcurrent", "maxWaiting", "queueTimeoutSeconds", "chunkCount",
+        "chunkSeconds", "cacheSize", "cacheHitSeconds", "cacheMissSeconds", "cpuBurnMs"
+      ]
+    },
+    "autoscaling": {
+      "type": "object",
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "minReplicas": {"type": "integer", "minimum": 2, "maximum": 3},
+        "maxReplicas": {"type": "integer", "minimum": 2, "maximum": 3},
+        "targetCPUUtilizationPercentage": {"type": "integer", "minimum": 1, "maximum": 100},
+        "scaleDownStabilizationSeconds": {"type": "integer", "minimum": 0}
+      },
+      "required": [
+        "enabled", "minReplicas", "maxReplicas",
+        "targetCPUUtilizationPercentage", "scaleDownStabilizationSeconds"
+      ]
+    },
+    "loadgen": {
+      "type": "object",
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "runId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,30}$"},
+        "scenario": {"type": "string", "enum": ["balanced", "hot"]},
+        "affinity": {"type": "boolean"},
+        "durationSeconds": {"type": "integer", "minimum": 1, "maximum": 3600},
+        "totalRps": {"type": "number", "exclusiveMinimum": 0},
+        "clientCount": {"type": "integer", "minimum": 2, "maximum": 20},
+        "concurrency": {"type": "integer", "minimum": 1, "maximum": 20},
+        "maxNewTokens": {"type": "integer", "minimum": 1, "maximum": 32}
+      },
+      "required": [
+        "enabled", "runId", "scenario", "affinity", "durationSeconds",
+        "totalRps", "clientCount", "concurrency", "maxNewTokens"
+      ]
+    }
+  },
+  "required": ["replicaCount", "image", "model", "simulator", "autoscaling", "loadgen"]
+}

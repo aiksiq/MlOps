@@ -1,0 +1,24 @@
+{
+  "annotations": {"list": []},
+  "editable": false,
+  "graphTooltip": 1,
+  "panels": [
+    {"datasource": {"type": "prometheus", "uid": "prometheus"}, "fieldConfig": {"defaults": {"unit": "s"}, "overrides": []}, "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}, "id": 1, "targets": [{"expr": "histogram_quantile(0.95, sum by (le, pod, prefix_cache) (rate(inference_ttfc_seconds_bucket[5m])))", "legendFormat": "{{pod}} {{prefix_cache}}", "refId": "A"}], "title": "TTFC p95 by Pod and cache result", "type": "timeseries"},
+    {"datasource": {"type": "prometheus", "uid": "prometheus"}, "fieldConfig": {"defaults": {"unit": "s"}, "overrides": []}, "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}, "id": 2, "targets": [{"expr": "histogram_quantile(0.95, sum by (le, pod, prefix_cache) (rate(inference_response_seconds_bucket[5m])))", "legendFormat": "{{pod}} {{prefix_cache}}", "refId": "A"}], "title": "Full response p95 by Pod and cache result", "type": "timeseries"},
+    {"datasource": {"type": "prometheus", "uid": "prometheus"}, "fieldConfig": {"defaults": {"unit": "short"}, "overrides": []}, "gridPos": {"h": 6, "w": 6, "x": 0, "y": 8}, "id": 3, "targets": [{"expr": "sum by (pod) (inference_running)", "legendFormat": "{{pod}} running", "refId": "A"}, {"expr": "sum by (pod) (inference_waiting)", "legendFormat": "{{pod}} waiting", "refId": "B"}], "title": "Running and waiting by Pod", "type": "timeseries"},
+    {"datasource": {"type": "prometheus", "uid": "prometheus"}, "fieldConfig": {"defaults": {"unit": "reqps"}, "overrides": []}, "gridPos": {"h": 6, "w": 6, "x": 6, "y": 8}, "id": 4, "targets": [{"expr": "sum by (pod) (rate(inference_requests_total{outcome=\"completed\"}[1m]))", "legendFormat": "{{pod}}", "refId": "A"}], "title": "Completed requests/s", "type": "timeseries"},
+    {"datasource": {"type": "prometheus", "uid": "prometheus"}, "fieldConfig": {"defaults": {"unit": "short"}, "overrides": []}, "gridPos": {"h": 6, "w": 6, "x": 12, "y": 8}, "id": 5, "targets": [{"expr": "sum by (pod, outcome) (rate(inference_requests_total{outcome=~\"rejected|aborted\"}[1m]))", "legendFormat": "{{pod}} {{outcome}}", "refId": "A"}], "title": "Rejected and aborted requests/s", "type": "timeseries"},
+    {"datasource": {"type": "prometheus", "uid": "prometheus"}, "fieldConfig": {"defaults": {"unit": "cores"}, "overrides": []}, "gridPos": {"h": 6, "w": 6, "x": 18, "y": 8}, "id": 6, "targets": [{"expr": "sum by (pod) (rate(container_cpu_usage_seconds_total{namespace=\"__NAMESPACE__\", container=\"hw11-simulator\"}[5m]))", "legendFormat": "{{pod}} CPU", "refId": "A"}], "title": "Pod CPU (cAdvisor required)", "type": "timeseries"},
+    {"datasource": {"type": "prometheus", "uid": "prometheus"}, "fieldConfig": {"defaults": {"unit": "short"}, "overrides": []}, "gridPos": {"h": 5, "w": 12, "x": 0, "y": 14}, "id": 7, "targets": [{"expr": "sum(kube_pod_status_ready{condition=\"true\", namespace=\"__NAMESPACE__\", pod=~\"hw11-hw11-simulator-.*\"})", "legendFormat": "Ready Pods", "refId": "A"}], "title": "Ready replicas (kube-state-metrics required)", "type": "timeseries"},
+    {"datasource": {"type": "prometheus", "uid": "prometheus"}, "fieldConfig": {"defaults": {"unit": "bytes"}, "overrides": []}, "gridPos": {"h": 6, "w": 12, "x": 0, "y": 20}, "id": 8, "targets": [{"expr": "sum by (pod) (container_memory_working_set_bytes{namespace=\"__NAMESPACE__\", container=\"hw11-simulator\"})", "legendFormat": "{{pod}} RAM", "refId": "A"}], "title": "Pod RAM (cAdvisor required)", "type": "timeseries"},
+    {"datasource": {"type": "prometheus", "uid": "prometheus"}, "fieldConfig": {"defaults": {"unit": "s"}, "overrides": []}, "gridPos": {"h": 5, "w": 12, "x": 12, "y": 14}, "id": 9, "targets": [{"expr": "histogram_quantile(0.95, sum by (le, pod, prefix_cache) (rate(inference_inter_chunk_seconds_bucket[5m])))", "legendFormat": "{{pod}} {{prefix_cache}}", "refId": "A"}], "title": "Inter-chunk p95", "type": "timeseries"}
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": ["mlops", "hw11"],
+  "templating": {"list": []},
+  "time": {"from": "now-15m", "to": "now"},
+  "title": "HW11 inference operations",
+  "uid": "hw11-inference",
+  "version": 1
+}

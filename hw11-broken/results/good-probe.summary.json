@@ -1,0 +1,31 @@
+{
+  "run_id": "good-probe",
+  "backend_mode": "simulated",
+  "scenario": "balanced",
+  "duration_seconds": 30.0,
+  "total_rps": 8.0,
+  "counts": {
+    "planned": 240,
+    "sent": 240,
+    "completed": 233,
+    "rejected": 7,
+    "aborted": 0,
+    "timed_out": 0,
+    "client_error": 0
+  },
+  "successful_latency_seconds": {
+    "observations": 233,
+    "ttfc_p50": 0.854619,
+    "ttfc_p95": 1.8932642000000002,
+    "full_p50": 1.061477,
+    "full_p95": 2.099332599999999,
+    "inter_chunk_observations": 1165,
+    "inter_chunk_p50": 0.040883,
+    "inter_chunk_p95": 0.0415438,
+    "queue_observations": 233,
+    "queue_p50": 0.7724395119998917,
+    "queue_p95": 1.8293954371998553,
+    "error_ratio": 0.029166666666666667
+  },
+  "output": "C:\\mlops\\MlOps\\hw11-broken\\results\\good-probe.csv"
+}

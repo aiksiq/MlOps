@@ -1,0 +1,17 @@
+﻿2026-11-15T19:59:36.4792959+03:00 request_id=f6ea7b61-16b5-4391-9f39-4e4c18841e31
+2026-11-15T19:59:36.5364970+03:00 event: meta
+2026-11-15T19:59:36.5400062+03:00 data: {"request_id":"f6ea7b61-16b5-4391-9f39-4e4c18841e31","session_id":"rollout-stream","pod":"hw11-hw11-simulator-7c967bfc97-f6css","model_version":"sim-v3","artifact_sha256":"3a6b97599b5e54e173d6ac02399ce5fa49970d886d05a864ea0fc36fe6d0bc90","backend_mode":"simulated","prefix_cache":"miss","queue_wait_seconds":6.371999916154891e-06,"history_is_request_scoped":true}
+2026-11-15T19:59:36.7029846+03:00 event: chunk
+2026-11-15T19:59:36.7051382+03:00 data: {"index":0,"content":"sim:sim-v3:ddf445cbd546:0"}
+2026-11-15T19:59:37.2195072+03:00 event: chunk
+2026-11-15T19:59:37.2215921+03:00 data: {"index":1,"content":"sim:sim-v3:ddf445cbd546:1"}
+2026-11-15T19:59:37.7363764+03:00 event: chunk
+2026-11-15T19:59:37.7390184+03:00 data: {"index":2,"content":"sim:sim-v3:ddf445cbd546:2"}
+2026-11-15T19:59:38.2528166+03:00 event: chunk
+2026-11-15T19:59:38.2564411+03:00 data: {"index":3,"content":"sim:sim-v3:ddf445cbd546:3"}
+2026-11-15T19:59:38.7691020+03:00 event: chunk
+2026-11-15T19:59:38.7734737+03:00 data: {"index":4,"content":"sim:sim-v3:ddf445cbd546:4"}
+2026-11-15T19:59:39.2855448+03:00 event: chunk
+2026-11-15T19:59:39.2897485+03:00 data: {"index":5,"content":"sim:sim-v3:ddf445cbd546:5"}
+2026-11-15T19:59:39.8015216+03:00 event: chunk
+2026-11-15T19:59:39.8041640+03:00 data: {"index":6,"content":"sim:sim-v3:ddf445cbd546:6"}

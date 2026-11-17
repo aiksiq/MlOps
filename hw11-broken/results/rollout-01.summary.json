@@ -1,0 +1,31 @@
+{
+  "run_id": "rollout-01",
+  "backend_mode": "simulated",
+  "scenario": "balanced",
+  "duration_seconds": 60.0,
+  "total_rps": 2.0,
+  "counts": {
+    "planned": 120,
+    "sent": 120,
+    "completed": 63,
+    "rejected": 57,
+    "aborted": 0,
+    "timed_out": 0,
+    "client_error": 0
+  },
+  "successful_latency_seconds": {
+    "observations": 63,
+    "ttfc_p50": 0.3866739999999993,
+    "ttfc_p95": 1.6728537000000006,
+    "full_p50": 0.7464210000000051,
+    "full_p95": 4.255792600000001,
+    "inter_chunk_observations": 315,
+    "inter_chunk_p50": 0.041015,
+    "inter_chunk_p95": 0.5167929,
+    "queue_observations": 63,
+    "queue_p50": 0.2528546229998483,
+    "queue_p95": 1.6138764739000409,
+    "error_ratio": 0.475
+  },
+  "output": "C:\\mlops\\MlOps\\hw11-broken\\results\\rollout-01.csv"
+}

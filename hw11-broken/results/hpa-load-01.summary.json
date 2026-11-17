@@ -1,0 +1,32 @@
+{
+  "run_id": "hpa-load-01",
+  "backend_mode": "simulated",
+  "scenario": "balanced",
+  "policy": "affinity",
+  "duration_seconds": 120.0,
+  "total_rps": 8.0,
+  "counts": {
+    "planned": 960,
+    "sent": 960,
+    "completed": 726,
+    "rejected": 234,
+    "aborted": 0,
+    "timed_out": 0,
+    "client_error": 0
+  },
+  "successful_latency_seconds": {
+    "observations": 726,
+    "ttfc_p50": 1.8608544999999985,
+    "ttfc_p95": 1.9941819999999932,
+    "full_p50": 2.1456449999999947,
+    "full_p95": 2.2799227499999972,
+    "inter_chunk_observations": 3630,
+    "inter_chunk_p50": 0.056504,
+    "inter_chunk_p95": 0.057611749999999996,
+    "queue_observations": 726,
+    "queue_p50": 1.7782967369998914,
+    "queue_p95": 1.917346508000037,
+    "error_ratio": 0.24375
+  },
+  "output": "C:\\mlops\\MlOps\\hw11-broken\\results\\hpa-load-01.csv"
+}

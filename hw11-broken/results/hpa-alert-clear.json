@@ -1,0 +1,21 @@
+﻿{
+    "timestamp":  "2026-11-15T18:06:34.1307483Z",
+    "rules":  [
+                  {
+                      "name":  "InferenceTTFCHigh",
+                      "state":  "inactive",
+                      "health":  "ok",
+                      "alerts":  [
+
+                                 ]
+                  },
+                  {
+                      "name":  "InferenceFailureRatioHigh",
+                      "state":  "inactive",
+                      "health":  "ok",
+                      "alerts":  [
+
+                                 ]
+                  }
+              ]
+}

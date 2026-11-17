@@ -1,0 +1,83 @@
+services:
+  simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hw11-simulator:0.1.0
+    environment:
+      MODEL_VERSION: sim-v1
+      WARMUP_SECONDS: "5"
+      MAX_CONCURRENT: "1"
+      MAX_WAITING: "8"
+      QUEUE_TIMEOUT_SECONDS: "2"
+      CHUNK_COUNT: "6"
+      CHUNK_SECONDS: "0.025"
+      PREFIX_CACHE_SIZE: "32"
+      CACHE_HIT_SECONDS: "0.04"
+      CACHE_MISS_SECONDS: "0.16"
+      CPU_BURN_MS: "15"
+      POD_NAME: simulator
+    ports:
+      - "127.0.0.1:8080:8080"
+    cpus: 1.0
+    mem_limit: 256m
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=24h
+      - --storage.tsdb.retention.size=512MB
+    volumes:
+      - ./monitoring/prometheus-compose.yml:/etc/prometheus/prometheus.yml:ro
+      - ./chart/files/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "127.0.0.1:9090:9090"
+    cpus: 0.5
+    mem_limit: 512m
+    depends_on:
+      simulator:
+        condition: service_started
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+  grafana:
+    image: grafana/grafana:11.4.0
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_USERS_DEFAULT_THEME: light
+    volumes:
+      - ./monitoring/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml:ro
+      - ./chart/files/dashboard-provider.yml:/etc/grafana/provisioning/dashboards/provider.yml:ro
+      - ./chart/files/grafana-dashboard.json:/etc/grafana/dashboards/hw11-dashboard.json:ro
+    ports:
+      - "127.0.0.1:3000:3000"
+    cpus: 0.25
+    mem_limit: 256m
+    depends_on:
+      - prometheus
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+volumes:
+  prometheus-data:

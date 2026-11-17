@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ДЗ 11 — отчёт по Kubernetes-прогонам</title>
+  <style>
+    *{box-sizing:border-box}body{max-width:980px;margin:40px auto;padding:0 24px;color:#18263d;font:17px/1.6 system-ui,sans-serif}
+    h1,h2{line-height:1.25}h2{margin-top:34px}.status{padding:16px;border-left:5px solid #c2410c;background:#fff7ed}
+    code,pre{font-family:ui-monospace,Consolas,monospace}pre{padding:14px;background:#f1f5f9;white-space:pre-wrap;overflow-wrap:anywhere}
+    table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;border-bottom:1px solid #cbd5e1;vertical-align:top}
+    @media print{body{margin:0 auto;font-size:12pt}.status{break-inside:avoid}h2{break-after:avoid}}
+  </style>
+</head>
+<body>
+  <h1>ДЗ 11. Сервис работает, пользователи ждут</h1>
+  <p><strong>Статус: локальный kind-кластер создан; A/B/C-опыты выполнены.</strong></p>
+  <div class="status">
+    Стенд: Windows 11, Docker Desktop/WSL2, kind 0.33.0, Kubernetes v1.31.4 (control-plane и два worker). Все приведённые HTTP-нагрузки измеряют явно помеченный <code>backend_mode=simulated</code>: это не GPU/LLM inference и не production-capacity benchmark. Для обычных A/B-сравнений HPA был закреплён на двух репликах; HPA-опыт запускался отдельно.
+  </div>
+
+  <h2>Гипотеза и воспроизводимый сервис</h2>
+  <p>При распределении запросов по двум репликам одна реплика может быть перегружена очередью, даже если средняя CPU по Deployment не выглядит высокой. Pod, который ещё прогревается, не должен попадать в Service endpoints. ClientIP affinity может закрепить горячего клиента за занятым Pod, а средняя CPU для HPA может скрыть перекос. Контур в <code>app.py</code> моделирует прогрев, ограниченную очередь, concurrent limit, prefix-cache hit/miss, CPU burn и потоковые ответы; он всегда сообщает <code>backend_mode=simulated</code>.</p>
+  <p>Артефакт симулятора размещён в ConfigMap и проверяется по SHA-256 при старте каждого Pod. Версия и hash отдаются клиенту. История диалога приходит в теле каждого запроса, поэтому замена Pod не удаляет session state.</p>
+
+  <h2>Изменения и проверенная логика</h2>
+  <table>
+    <thead><tr><th>Тема</th><th>Реализация</th><th>Доказательство, доступное сейчас</th></tr></thead>
+    <tbody>
+      <tr><td>Readiness и прогрев</td><td>Раздельные <code>/health</code>, <code>/startup</code>, <code>/ready</code>; Helm-флаг <code>probes.badProbes</code> воспроизводит раннюю готовность.</td><td>При ошибочных probes 126/240 запросов отклонены; после исправления 233/240 завершены. Незрелый Pod отвечал 503 на <code>/ready</code> и <code>/generate</code>.</td></tr>
+      <tr><td>Обновление и версия</td><td>RollingUpdate maxUnavailable=0; 30 s grace; ограниченная история revision; hash ConfigMap закреплён в шаблоне Pod.</td><td>Длинный SSE-запрос пережил rollout, нагрузка дала 12/12 успешных ответов. Негодный выпуск не стал Ready; rollback восстановил <code>sim-v3</code> и ожидаемый SHA.</td></tr>
+      <tr><td>Балансировка</td><td>Два Service над тем же Deployment; локальный bounded prefix cache; 4 Indexed client Pod и детерминированная нагрузка.</td><td>12 контролируемых запусков по 120 s; на каждом timeline подтвердил две Ready-реплики и два Ready endpoint.</td></tr>
+      <tr><td>Метрики и HPA</td><td>Classic Histograms, low-cardinality labels, Prometheus discovery, Grafana dashboard, HPA 2–3 CPU и два алерта.</td><td>Зафиксирован переход HPA 2→3→2. Оба alert rules наблюдались в firing и вернулись в inactive.</td></tr>
+      <tr><td>Учет ответов</td><td>JSONL журнал с request/session ID, Pod, version; результаты клиента различают completed/rejected/aborted/timed_out.</td><td>Принудительное удаление Pod оборвало один поток; замещающий Pod восстановился за 22.98 s, сохранив версию, hash и request-scoped history.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Измеренный локальный smoke (не Kubernetes)</h2>
+  <p>Один локальный процесс, <code>WARMUP_SECONDS=0</code>, версия <code>local-smoke-v1</code>, один слот генерации, 1 запланированный req/s в течение 5 s; четыре виртуальных client ID, но один реальный source IP. Начальный cache для данного run ID холодный; первая часть учитывает cache miss, вторая и последующие части — только decode delay. Это демонстрация формата измерений, а не стендовый результат задания.</p>
+  <table>
+    <thead><tr><th>Измерение</th><th>Результат</th></tr></thead>
+    <tbody>
+      <tr><td>planned / sent / completed</td><td>5 / 5 / 5</td></tr>
+      <tr><td>rejected / aborted / timed out</td><td>0 / 0 / 0</td></tr>
+      <tr><td>Успешные наблюдения</td><td>5</td></tr>
+      <tr><td>TTFC p50 / p95</td><td>0.185 / 0.239 s</td></tr>
+      <tr><td>Полный ответ p50 / p95</td><td>0.387 / 0.473 s</td></tr>
+      <tr><td>Inter-chunk p50 / p95 (25 интервалов)</td><td>0.049 / 0.051 s</td></tr>
+      <tr><td>Queue wait p50 / p95</td><td>0.000004 / 0.000007 s</td></tr>
+    </tbody>
+  </table>
+  <p>Сырые записи и summary: <code>results/local-smoke.csv</code>, <code>results/local-smoke.summary.json</code>. Измерения получены на одной машине и не характеризуют два Pod, Kubernetes Service или HPA.</p>
+
+  <h2>Кластерные опыты и результаты</h2>
+  <h3>A — прогрев, rollout, rollback и замена Pod</h3>
+  <p>При неправильных probes новый Pod становился обслуживаемым до окончания 20-секундного прогрева: за 30 s при 8 RPS отправлено 240 запросов, 114 завершились, 126 получили отказ (52.5%). После переключения на <code>/startup</code> и <code>/ready</code> при той же нагрузке завершились 233 из 240; 7 были отклонены насыщенной очередью. Прямые проверки непрогретого Pod подтвердили 503 на <code>/ready</code> и <code>/generate</code>.</p>
+  <p>Поток из 32 частей пережил rolling update; отдельный 120-секундный запуск дал 12/12 завершённых ответов без abort/timeout. Выпуск с неготовым backend не появился в Ready EndpointSlice; Helm rollback вернул <code>sim-v3</code>. SHA-256 артефакта: <code>3a6b97599b5e54e173d6ac02399ce5fa49970d886d05a864ea0fc36fe6d0bc90</code>. Принудительное удаление Pod оборвало текущий поток с outcome <code>aborted</code>; новый Pod того же ReplicaSet восстановился за 22.98 s, интеграционная проверка подтвердила версию, SHA и изолированную историю диалога.</p>
+  <p>Данные: <a href="results/bad-probe.summary.json">bad-probe summary</a>, <a href="results/good-probe.summary.json">good-probe summary</a>, <a href="results/rollout-02.summary.json">rollout summary</a>, <a href="results/replacement-evidence.json">replacement evidence</a>.</p>
+
+  <h3>B — обычный Service против ClientIP affinity</h3>
+  <p>Для balanced и hot сценариев выполнено по три 120-секундных прогона при 8 запланированных RPS, ровно двух Ready Pod и двух Ready endpoints. Каждая строка агрегирует 2,880 запланированных/отправленных запросов; p95 — среднее арифметическое трёх p95 по запускам. Время в таблице — секунды.</p>
+  <table>
+    <thead><tr><th>Трафик</th><th>Политика</th><th>Completed</th><th>Rejected</th><th>TTFC p95, mean</th><th>Full p95, mean</th></tr></thead>
+    <tbody>
+      <tr><td>balanced</td><td>normal</td><td>2,788 / 2,880</td><td>92 (3.2%)</td><td>1.931</td><td>2.137</td></tr>
+      <tr><td>balanced</td><td>ClientIP affinity</td><td>2,114 / 2,880</td><td>766 (26.6%)</td><td>1.988</td><td>2.199</td></tr>
+      <tr><td>hot</td><td>normal</td><td>2,880 / 2,880</td><td>0</td><td>0.948</td><td>1.157</td></tr>
+      <tr><td>hot</td><td>ClientIP affinity</td><td>2,880 / 2,880</td><td>0</td><td>1.216</td><td>1.426</td></tr>
+    </tbody>
+  </table>
+  <p>Все B-прогоны имели 0 abort и timeout. При balanced traffic affinity заметно увеличила отказы, тогда как normal Service распределил нагрузку лучше. В hot сценарии affinity не вызвала отказов, но средний run p95 TTFC был выше. Это результаты bounded simulator с локальным prefix cache, а не универсальная характеристика Kubernetes или реальной модели. CSV каждого клиента, агрегаты и timeline сохранены в <code>results/b-*.csv</code> и <code>results/b-*-timeline.jsonl</code>.</p>
+
+  <h3>C — HPA и алерты</h3>
+  <p>Для отдельного balanced-affinity прогона временно выставлен <code>cpuBurnMs=30</code>, HPA target CPU 60%, min=2, max=3, scale-down stabilization 60 s. Из 960 запросов 726 завершились и 234 были отклонены; abort/timeout не было. Timeline зафиксировал масштабирование 2→3 в 17:56:30Z и возврат 3→2 в 17:59:30Z; далее все endpoints оставались Ready. После опыта нагрузка симулятора возвращена к <code>cpuBurnMs=15</code>.</p>
+  <p><code>InferenceFailureRatioHigh</code> перешёл в pending, затем firing во время нагрузки. <code>InferenceTTFCHigh</code> уже был firing при первой выборке (не приписывается именно этому прогону). После снижения нагрузки и истечения окна Prometheus оба правила вернулись в inactive. Это JSON API состояния Prometheus, не только конфигурация alert rules.</p>
+  <p><a href="results/hpa-load-01.summary.json">HPA load summary</a>, <a href="results/hpa-alerts.jsonl">alert timeline</a>, <a href="results/hpa-alert-clear.json">cleared alert state</a>, <a href="results/hpa-timeline.jsonl">replica/endpoint timeline</a>.</p>
+
+  <h3>Графики</h3>
+  <figure><img src="results/plots/01-warmup-ready.svg" alt="Ready Pods и Service endpoints при ошибочных probes" style="max-width:100%"><figcaption>01 — Прогрев и readiness при ошибочных probes.</figcaption></figure>
+  <figure><img src="results/plots/02-pod-latency-queue.svg" alt="TTFC и очередь p95 по Pod" style="max-width:100%"><figcaption>02 — TTFC и queue p95 по Pod для B-прогонов.</figcaption></figure>
+  <figure><img src="results/plots/03-policy-comparison.svg" alt="Сравнение политики Service по p95 TTFC" style="max-width:100%"><figcaption>03 — Среднее run p95 TTFC по политикам и сценариям.</figcaption></figure>
+  <figure><img src="results/plots/04-hpa-load.svg" alt="HPA и предложенная нагрузка" style="max-width:100%"><figcaption>04 — HPA replicas и предложенная нагрузка.</figcaption></figure>
+
+  <h2>Метрики и PromQL</h2>
+  <p>Для simulator используются TTFC (до первого содержательного chunk) и inter-chunk latency, не TTFT/TPOT/tokens/s. Успешные клиентские p50/p95 вычисляются по монотонным клиентским часам. Серверный classic histogram хранит только успешные ответы; cache hit/miss — bounded label, Pod и version — labels discovery.</p>
+  <pre>histogram_quantile(0.95, sum by (le, pod, prefix_cache) (rate(inference_ttfc_seconds_bucket[5m])))
+histogram_quantile(0.95, sum by (le, pod, prefix_cache) (rate(inference_response_seconds_bucket[5m])))
+sum by (pod) (inference_running)
+sum by (pod) (inference_waiting)
+sum by (pod) (rate(inference_requests_total{outcome="completed"}[1m]))
+sum by (pod, outcome) (rate(inference_requests_total{outcome=~"rejected|aborted"}[1m]))</pre>
+  <p>Сверка должна использовать один run ID и одинаковый набор успешно завершённых request ID, учитывая разницу между histogram scrape windows и клиентскими timestamps.</p>
+
+  <h2>Разбор на ревью</h2>
+  <p>Не следует навсегда закреплять диалог за Pod. Иллюстративно: если A обещает очередь 3 s, а B может пересчитать сохранённый префикс за 0,8 s, для <em>нового</em> запроса предпочтительнее B, если бюджет задержки допускает пересчёт и стоимость восстановления проверена измерениями. Решение нужно принимать по возрасту очереди, ожидаемой длительности завершения, глубине/стоимости prefill, реальному hit rate префикса, доступной памяти/CPU и SLA, а не только по мгновенной длине очереди. Нужны p50/p95 TTFC и full latency по Pod, cache hit/miss, длина и возраст очереди, доля отмен, стоимость токенов/CPU и частота потери состояния. Установите ограничение на очередь и admission timeout; не направляйте запрос на B только по сигналу «у A занято», если прогноз A всё ещё лучше бюджета или B уже перегружена.</p>
+  <p>Историю держите в клиенте либо внешнем хранилище с версией/контрольной суммой и передавайте в каждом запросе: потеря A тогда не уничтожает диалог. Если восстановление невозможно, верните явный отказ и попросите восстановить контекст, а не молча начните новую сессию. Уже начатый поток остаётся на A до завершения; переносить его середину на B нельзя без протокола resume/deduplication. При аварийном обрыве отметьте попытку как aborted, сохраните request ID и разрешите повтор только с явной семантикой идемпотентности.</p>
+  <div class="status">
+    В предоставленной рабочей копии есть только задание <code>docs/homework11.html</code>, но нет упомянутого в нём <code>lecture11-extended.html</code>. Поэтому привязка разбора к конкретному company case из лекции и первичному источнику остаётся незаполненной; кейс не выдумывался.
+  </div>
+
+  <h2>Ограничения</h2>
+  <ul>
+    <li>Все HTTP-измерения получены на simulator workload; значения задержек/отказов нельзя переносить на реальную модель или GPU-инференс.</li>
+    <li>Это один локальный kind-кластер и одна конфигурация ресурсов; результаты описывают данный стенд, а не production-capacity.</li>
+    <li>В рабочей копии есть задание <code>docs/homework11.html</code>, но отсутствует упомянутый <code>lecture11-extended.html</code>. Поэтому company case и первичный источник не выдумывались и не приписывались отчёту.</li>
+    <li>Клиентские p50/p95 считаются только по полностью завершённым ответам; rejected/aborted/timeout приведены отдельно. Серверные histogram использует scrape windows и не обязаны совпадать с клиентскими timestamp.</li>
+  </ul>
+</body>
+</html>

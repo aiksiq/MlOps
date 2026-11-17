@@ -1,0 +1,10 @@
+Application base image: python:3.12.8-slim
+Application dependencies: requirements.txt (all direct requirements pinned)
+kind node image / Kubernetes: kindest/node:v1.31.4
+metrics-server: v0.7.2
+Prometheus: prom/prometheus:v2.55.1
+Grafana: grafana/grafana:11.4.0
+kube-state-metrics: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.13.0
+Application image: hw11-simulator:0.1.0
+
+The local Kubernetes CLI versions are environment-specific. Capture them with scripts/show-versions.ps1 before the actual experiment.

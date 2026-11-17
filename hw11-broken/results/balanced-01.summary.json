@@ -1,0 +1,31 @@
+{
+  "run_id": "balanced-01",
+  "backend_mode": "simulated",
+  "scenario": "balanced",
+  "duration_seconds": 120.0,
+  "total_rps": 8.0,
+  "counts": {
+    "planned": 960,
+    "sent": 960,
+    "completed": 927,
+    "rejected": 33,
+    "aborted": 0,
+    "timed_out": 0,
+    "client_error": 0
+  },
+  "successful_latency_seconds": {
+    "observations": 927,
+    "ttfc_p50": 1.3647890000000018,
+    "ttfc_p95": 1.8907359000000012,
+    "full_p50": 1.5702619999999996,
+    "full_p95": 2.096044000000005,
+    "inter_chunk_observations": 4635,
+    "inter_chunk_p50": 0.040845,
+    "inter_chunk_p95": 0.041453899999999995,
+    "queue_observations": 927,
+    "queue_p50": 1.3018566559999272,
+    "queue_p95": 1.8272443302000283,
+    "error_ratio": 0.034375
+  },
+  "output": "C:\\mlops\\MlOps\\hw11-broken\\results\\balanced-01.csv"
+}

@@ -1,0 +1,1111 @@
+﻿{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "checksum/artifact": "3a6b97599b5e54e173d6ac02399ce5fa49970d886d05a864ea0fc36fe6d0bc90",
+                    "prometheus.io/scrape": "true"
+                },
+                "creationTimestamp": "2026-11-15T16:54:32Z",
+                "generateName": "hw11-hw11-simulator-7c859f99dc-",
+                "labels": {
+                    "app.kubernetes.io/instance": "hw11",
+                    "app.kubernetes.io/managed-by": "Helm",
+                    "app.kubernetes.io/name": "hw11-simulator",
+                    "app.kubernetes.io/version": "sim-v3",
+                    "pod-template-hash": "7c859f99dc"
+                },
+                "name": "hw11-hw11-simulator-7c859f99dc-9rhk2",
+                "namespace": "hw11",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "hw11-hw11-simulator-7c859f99dc",
+                        "uid": "63447444-35c7-4456-9de2-37757e7b1bda"
+                    }
+                ],
+                "resourceVersion": "5831",
+                "uid": "2774ff9b-37fc-4654-977d-da34670ee0b4"
+            },
+            "spec": {
+                "affinity": {
+                    "podAntiAffinity": {
+                        "preferredDuringSchedulingIgnoredDuringExecution": [
+                            {
+                                "podAffinityTerm": {
+                                    "labelSelector": {
+                                        "matchLabels": {
+                                            "app.kubernetes.io/instance": "hw11",
+                                            "app.kubernetes.io/name": "hw11-simulator"
+                                        }
+                                    },
+                                    "topologyKey": "kubernetes.io/hostname"
+                                },
+                                "weight": 100
+                            }
+                        ]
+                    }
+                },
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "PORT",
+                                "value": "8080"
+                            },
+                            {
+                                "name": "MODEL_VERSION",
+                                "value": "sim-v3"
+                            },
+                            {
+                                "name": "BACKEND_READY",
+                                "value": "true"
+                            },
+                            {
+                                "name": "WARMUP_SECONDS",
+                                "value": "20"
+                            },
+                            {
+                                "name": "MAX_CONCURRENT",
+                                "value": "1"
+                            },
+                            {
+                                "name": "MAX_WAITING",
+                                "value": "8"
+                            },
+                            {
+                                "name": "QUEUE_TIMEOUT_SECONDS",
+                                "value": "2"
+                            },
+                            {
+                                "name": "CHUNK_COUNT",
+                                "value": "6"
+                            },
+                            {
+                                "name": "CHUNK_SECONDS",
+                                "value": "0.025"
+                            },
+                            {
+                                "name": "PREFIX_CACHE_SIZE",
+                                "value": "32"
+                            },
+                            {
+                                "name": "CACHE_HIT_SECONDS",
+                                "value": "0.04"
+                            },
+                            {
+                                "name": "CACHE_MISS_SECONDS",
+                                "value": "0.16"
+                            },
+                            {
+                                "name": "CPU_BURN_MS",
+                                "value": "15"
+                            },
+                            {
+                                "name": "ARTIFACT_PATH",
+                                "value": "/app/artifact/model-artifact.txt"
+                            },
+                            {
+                                "name": "ARTIFACT_SHA256",
+                                "value": "3a6b97599b5e54e173d6ac02399ce5fa49970d886d05a864ea0fc36fe6d0bc90"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "hw11-simulator:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "lifecycle": {
+                            "preStop": {
+                                "exec": {
+                                    "command": [
+                                        "sh",
+                                        "-c",
+                                        "sleep 2"
+                                    ]
+                                }
+                            }
+                        },
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/health",
+                                "port": "metrics",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "hw11-simulator",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "name": "metrics",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/ready",
+                                "port": "metrics",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "256Mi"
+                            },
+                            "requests": {
+                                "cpu": "250m",
+                                "memory": "128Mi"
+                            }
+                        },
+                        "startupProbe": {
+                            "failureThreshold": 40,
+                            "httpGet": {
+                                "path": "/startup",
+                                "port": "metrics",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/app/artifact/model-artifact.txt",
+                                "name": "artifact",
+                                "readOnly": true,
+                                "subPath": "model-artifact.txt"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-lfjkq",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "hw11-worker2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "runAsGroup": 10001,
+                    "runAsNonRoot": true,
+                    "runAsUser": 10001,
+                    "seccompProfile": {
+                        "type": "RuntimeDefault"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "hw11-hw11-simulator-artifact"
+                        },
+                        "name": "artifact"
+                    },
+                    {
+                        "name": "kube-api-access-lfjkq",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:33Z",
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:32Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:54Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:54Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:32Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://4129e4c12a9a7b30163dfc081ccc049d10db7bda05e911b1ba9973e3c888dd8b",
+                        "image": "docker.io/library/hw11-simulator:0.1.0",
+                        "imageID": "docker.io/library/import-2026-11-15@sha256:209f09c7da6b9fc00b5184d6ba8f97697a659363408f8c7ecc43d7e4b04a8010",
+                        "lastState": {},
+                        "name": "hw11-simulator",
+                        "ready": true,
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-11-15T16:54:33Z"
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/app/artifact/model-artifact.txt",
+                                "name": "artifact",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-lfjkq",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.18.0.3",
+                "hostIPs": [
+                    {
+                        "ip": "172.18.0.3"
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "10.244.1.24",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.24"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-11-15T16:54:32Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "checksum/artifact": "3a6b97599b5e54e173d6ac02399ce5fa49970d886d05a864ea0fc36fe6d0bc90",
+                    "prometheus.io/scrape": "true"
+                },
+                "creationTimestamp": "2026-11-15T16:54:08Z",
+                "generateName": "hw11-hw11-simulator-7c859f99dc-",
+                "labels": {
+                    "app.kubernetes.io/instance": "hw11",
+                    "app.kubernetes.io/managed-by": "Helm",
+                    "app.kubernetes.io/name": "hw11-simulator",
+                    "app.kubernetes.io/version": "sim-v3",
+                    "pod-template-hash": "7c859f99dc"
+                },
+                "name": "hw11-hw11-simulator-7c859f99dc-z5r2n",
+                "namespace": "hw11",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "hw11-hw11-simulator-7c859f99dc",
+                        "uid": "63447444-35c7-4456-9de2-37757e7b1bda"
+                    }
+                ],
+                "resourceVersion": "5742",
+                "uid": "9c971ae3-d989-4f8c-9edd-a63d622165f2"
+            },
+            "spec": {
+                "affinity": {
+                    "podAntiAffinity": {
+                        "preferredDuringSchedulingIgnoredDuringExecution": [
+                            {
+                                "podAffinityTerm": {
+                                    "labelSelector": {
+                                        "matchLabels": {
+                                            "app.kubernetes.io/instance": "hw11",
+                                            "app.kubernetes.io/name": "hw11-simulator"
+                                        }
+                                    },
+                                    "topologyKey": "kubernetes.io/hostname"
+                                },
+                                "weight": 100
+                            }
+                        ]
+                    }
+                },
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "PORT",
+                                "value": "8080"
+                            },
+                            {
+                                "name": "MODEL_VERSION",
+                                "value": "sim-v3"
+                            },
+                            {
+                                "name": "BACKEND_READY",
+                                "value": "true"
+                            },
+                            {
+                                "name": "WARMUP_SECONDS",
+                                "value": "20"
+                            },
+                            {
+                                "name": "MAX_CONCURRENT",
+                                "value": "1"
+                            },
+                            {
+                                "name": "MAX_WAITING",
+                                "value": "8"
+                            },
+                            {
+                                "name": "QUEUE_TIMEOUT_SECONDS",
+                                "value": "2"
+                            },
+                            {
+                                "name": "CHUNK_COUNT",
+                                "value": "6"
+                            },
+                            {
+                                "name": "CHUNK_SECONDS",
+                                "value": "0.025"
+                            },
+                            {
+                                "name": "PREFIX_CACHE_SIZE",
+                                "value": "32"
+                            },
+                            {
+                                "name": "CACHE_HIT_SECONDS",
+                                "value": "0.04"
+                            },
+                            {
+                                "name": "CACHE_MISS_SECONDS",
+                                "value": "0.16"
+                            },
+                            {
+                                "name": "CPU_BURN_MS",
+                                "value": "15"
+                            },
+                            {
+                                "name": "ARTIFACT_PATH",
+                                "value": "/app/artifact/model-artifact.txt"
+                            },
+                            {
+                                "name": "ARTIFACT_SHA256",
+                                "value": "3a6b97599b5e54e173d6ac02399ce5fa49970d886d05a864ea0fc36fe6d0bc90"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "hw11-simulator:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "lifecycle": {
+                            "preStop": {
+                                "exec": {
+                                    "command": [
+                                        "sh",
+                                        "-c",
+                                        "sleep 2"
+                                    ]
+                                }
+                            }
+                        },
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/health",
+                                "port": "metrics",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "hw11-simulator",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "name": "metrics",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/ready",
+                                "port": "metrics",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "256Mi"
+                            },
+                            "requests": {
+                                "cpu": "250m",
+                                "memory": "128Mi"
+                            }
+                        },
+                        "startupProbe": {
+                            "failureThreshold": 40,
+                            "httpGet": {
+                                "path": "/startup",
+                                "port": "metrics",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/app/artifact/model-artifact.txt",
+                                "name": "artifact",
+                                "readOnly": true,
+                                "subPath": "model-artifact.txt"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-2fwtr",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "hw11-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "runAsGroup": 10001,
+                    "runAsNonRoot": true,
+                    "runAsUser": 10001,
+                    "seccompProfile": {
+                        "type": "RuntimeDefault"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "hw11-hw11-simulator-artifact"
+                        },
+                        "name": "artifact"
+                    },
+                    {
+                        "name": "kube-api-access-2fwtr",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:09Z",
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:08Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:30Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:30Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:54:08Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://0756c52dad2019c4b306ed846a8baebf9cc77fe7b45e918da504d5be3cdb872d",
+                        "image": "docker.io/library/hw11-simulator:0.1.0",
+                        "imageID": "docker.io/library/import-2026-11-15@sha256:209f09c7da6b9fc00b5184d6ba8f97697a659363408f8c7ecc43d7e4b04a8010",
+                        "lastState": {},
+                        "name": "hw11-simulator",
+                        "ready": true,
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-11-15T16:54:08Z"
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/app/artifact/model-artifact.txt",
+                                "name": "artifact",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-2fwtr",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.18.0.2",
+                "hostIPs": [
+                    {
+                        "ip": "172.18.0.2"
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "10.244.2.36",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.36"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-11-15T16:54:08Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "checksum/artifact": "3a6b97599b5e54e173d6ac02399ce5fa49970d886d05a864ea0fc36fe6d0bc90",
+                    "prometheus.io/scrape": "true"
+                },
+                "creationTimestamp": "2026-11-15T16:56:09Z",
+                "generateName": "hw11-hw11-simulator-c49469646-",
+                "labels": {
+                    "app.kubernetes.io/instance": "hw11",
+                    "app.kubernetes.io/managed-by": "Helm",
+                    "app.kubernetes.io/name": "hw11-simulator",
+                    "app.kubernetes.io/version": "bad-v4",
+                    "pod-template-hash": "c49469646"
+                },
+                "name": "hw11-hw11-simulator-c49469646-bsmwd",
+                "namespace": "hw11",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "hw11-hw11-simulator-c49469646",
+                        "uid": "743ec31a-38d3-4ad7-a276-968444d98df2"
+                    }
+                ],
+                "resourceVersion": "6066",
+                "uid": "cadbc738-ac16-4ae0-b672-9cda923d1c12"
+            },
+            "spec": {
+                "affinity": {
+                    "podAntiAffinity": {
+                        "preferredDuringSchedulingIgnoredDuringExecution": [
+                            {
+                                "podAffinityTerm": {
+                                    "labelSelector": {
+                                        "matchLabels": {
+                                            "app.kubernetes.io/instance": "hw11",
+                                            "app.kubernetes.io/name": "hw11-simulator"
+                                        }
+                                    },
+                                    "topologyKey": "kubernetes.io/hostname"
+                                },
+                                "weight": 100
+                            }
+                        ]
+                    }
+                },
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "PORT",
+                                "value": "8080"
+                            },
+                            {
+                                "name": "MODEL_VERSION",
+                                "value": "bad-v4"
+                            },
+                            {
+                                "name": "BACKEND_READY",
+                                "value": "false"
+                            },
+                            {
+                                "name": "WARMUP_SECONDS",
+                                "value": "20"
+                            },
+                            {
+                                "name": "MAX_CONCURRENT",
+                                "value": "1"
+                            },
+                            {
+                                "name": "MAX_WAITING",
+                                "value": "8"
+                            },
+                            {
+                                "name": "QUEUE_TIMEOUT_SECONDS",
+                                "value": "2"
+                            },
+                            {
+                                "name": "CHUNK_COUNT",
+                                "value": "6"
+                            },
+                            {
+                                "name": "CHUNK_SECONDS",
+                                "value": "0.025"
+                            },
+                            {
+                                "name": "PREFIX_CACHE_SIZE",
+                                "value": "32"
+                            },
+                            {
+                                "name": "CACHE_HIT_SECONDS",
+                                "value": "0.04"
+                            },
+                            {
+                                "name": "CACHE_MISS_SECONDS",
+                                "value": "0.16"
+                            },
+                            {
+                                "name": "CPU_BURN_MS",
+                                "value": "15"
+                            },
+                            {
+                                "name": "ARTIFACT_PATH",
+                                "value": "/app/artifact/model-artifact.txt"
+                            },
+                            {
+                                "name": "ARTIFACT_SHA256",
+                                "value": "3a6b97599b5e54e173d6ac02399ce5fa49970d886d05a864ea0fc36fe6d0bc90"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "hw11-simulator:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "lifecycle": {
+                            "preStop": {
+                                "exec": {
+                                    "command": [
+                                        "sh",
+                                        "-c",
+                                        "sleep 2"
+                                    ]
+                                }
+                            }
+                        },
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/health",
+                                "port": "metrics",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "hw11-simulator",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "name": "metrics",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/ready",
+                                "port": "metrics",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "256Mi"
+                            },
+                            "requests": {
+                                "cpu": "250m",
+                                "memory": "128Mi"
+                            }
+                        },
+                        "startupProbe": {
+                            "failureThreshold": 40,
+                            "httpGet": {
+                                "path": "/startup",
+                                "port": "metrics",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/app/artifact/model-artifact.txt",
+                                "name": "artifact",
+                                "readOnly": true,
+                                "subPath": "model-artifact.txt"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-kpkd2",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "hw11-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "runAsGroup": 10001,
+                    "runAsNonRoot": true,
+                    "runAsUser": 10001,
+                    "seccompProfile": {
+                        "type": "RuntimeDefault"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "hw11-hw11-simulator-artifact"
+                        },
+                        "name": "artifact"
+                    },
+                    {
+                        "name": "kube-api-access-kpkd2",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:56:10Z",
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:56:09Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:56:09Z",
+                        "message": "containers with unready status: [hw11-simulator]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:56:09Z",
+                        "message": "containers with unready status: [hw11-simulator]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-15T16:56:09Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://29c9f9ef2d4ca50907b23d742ccbc87e9d149831f1482e2815cd9ba9d90a9f4f",
+                        "image": "docker.io/library/hw11-simulator:0.1.0",
+                        "imageID": "docker.io/library/import-2026-11-15@sha256:209f09c7da6b9fc00b5184d6ba8f97697a659363408f8c7ecc43d7e4b04a8010",
+                        "lastState": {},
+                        "name": "hw11-simulator",
+                        "ready": false,
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-11-15T16:56:09Z"
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/app/artifact/model-artifact.txt",
+                                "name": "artifact",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-kpkd2",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.18.0.2",
+                "hostIPs": [
+                    {
+                        "ip": "172.18.0.2"
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "10.244.2.37",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.37"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-11-15T16:56:09Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

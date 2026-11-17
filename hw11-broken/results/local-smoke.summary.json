@@ -1,0 +1,31 @@
+{
+  "run_id": "local-smoke-final",
+  "backend_mode": "simulated",
+  "scenario": "balanced",
+  "duration_seconds": 5.0,
+  "total_rps": 1.0,
+  "counts": {
+    "planned": 5,
+    "sent": 5,
+    "completed": 5,
+    "rejected": 0,
+    "aborted": 0,
+    "timed_out": 0,
+    "client_error": 0
+  },
+  "successful_latency_seconds": {
+    "observations": 5,
+    "ttfc_p50": 0.18524600000000002,
+    "ttfc_p95": 0.23913099999999998,
+    "full_p50": 0.38689299999999993,
+    "full_p95": 0.473078,
+    "inter_chunk_observations": 25,
+    "inter_chunk_p50": 0.048674,
+    "inter_chunk_p95": 0.050906400000000004,
+    "queue_observations": 5,
+    "queue_p50": 3.800014383159578e-06,
+    "queue_p95": 7.139999070204794e-06,
+    "error_ratio": 0.0
+  },
+  "output": "results\\local-smoke.csv"
+}

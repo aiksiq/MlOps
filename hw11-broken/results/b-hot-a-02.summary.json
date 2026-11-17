@@ -1,0 +1,32 @@
+{
+  "run_id": "b-hot-a-02",
+  "backend_mode": "simulated",
+  "scenario": "hot",
+  "policy": "affinity",
+  "duration_seconds": 120.0,
+  "total_rps": 8.0,
+  "counts": {
+    "planned": 960,
+    "sent": 960,
+    "completed": 960,
+    "rejected": 0,
+    "aborted": 0,
+    "timed_out": 0,
+    "client_error": 0
+  },
+  "successful_latency_seconds": {
+    "observations": 960,
+    "ttfc_p50": 0.8579655000000042,
+    "ttfc_p95": 1.1257486499999996,
+    "full_p50": 1.0671930000000032,
+    "full_p95": 1.3353983000000027,
+    "inter_chunk_observations": 4800,
+    "inter_chunk_p50": 0.041466,
+    "inter_chunk_p95": 0.04218025,
+    "queue_observations": 960,
+    "queue_p50": 0.7900489205003396,
+    "queue_p95": 1.058042499999783,
+    "error_ratio": 0.0
+  },
+  "output": "C:\\mlops\\MlOps\\hw11-broken\\results\\b-hot-a-02.csv"
+}

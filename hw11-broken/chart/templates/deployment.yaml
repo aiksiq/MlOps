@@ -1,0 +1,126 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hw11.fullname" . }}
+  labels:
+    {{- include "hw11.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  minReadySeconds: 2
+  progressDeadlineSeconds: 300
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "hw11.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        {{- include "hw11.labels" . | nindent 8 }}
+      annotations:
+        checksum/artifact: {{ .Files.Get "files/model-artifact.txt" | replace "\r" "" | sha256sum }}
+        prometheus.io/scrape: "true"
+    spec:
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: {{ include "hw11.name" . }}
+                    app.kubernetes.io/instance: {{ .Release.Name }}
+      containers:
+        - name: hw11-simulator
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: metrics
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          env:
+            - name: PORT
+              value: {{ .Values.service.port | quote }}
+            - name: MODEL_VERSION
+              value: {{ .Values.model.version | quote }}
+            - name: BACKEND_READY
+              value: {{ .Values.model.backendReady | quote }}
+            - name: WARMUP_SECONDS
+              value: {{ .Values.simulator.warmupSeconds | quote }}
+            - name: MAX_CONCURRENT
+              value: {{ .Values.simulator.maxConcurrent | quote }}
+            - name: MAX_WAITING
+              value: {{ .Values.simulator.maxWaiting | quote }}
+            - name: QUEUE_TIMEOUT_SECONDS
+              value: {{ .Values.simulator.queueTimeoutSeconds | quote }}
+            - name: CHUNK_COUNT
+              value: {{ .Values.simulator.chunkCount | quote }}
+            - name: CHUNK_SECONDS
+              value: {{ .Values.simulator.chunkSeconds | quote }}
+            - name: PREFIX_CACHE_SIZE
+              value: {{ .Values.simulator.cacheSize | quote }}
+            - name: CACHE_HIT_SECONDS
+              value: {{ .Values.simulator.cacheHitSeconds | quote }}
+            - name: CACHE_MISS_SECONDS
+              value: {{ .Values.simulator.cacheMissSeconds | quote }}
+            - name: CPU_BURN_MS
+              value: {{ .Values.simulator.cpuBurnMs | quote }}
+            - name: ARTIFACT_PATH
+              value: /app/artifact/model-artifact.txt
+            - name: ARTIFACT_SHA256
+              value: {{ .Files.Get "files/model-artifact.txt" | replace "\r" "" | sha256sum | quote }}
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          startupProbe:
+            httpGet:
+              path: {{ ternary "/health" "/startup" .Values.probes.badProbes }}
+              port: metrics
+            periodSeconds: {{ .Values.probes.startup.periodSeconds }}
+            failureThreshold: {{ .Values.probes.startup.failureThreshold }}
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: {{ ternary "/health" "/ready" .Values.probes.badProbes }}
+              port: metrics
+            periodSeconds: {{ .Values.probes.readiness.periodSeconds }}
+            failureThreshold: 1
+            timeoutSeconds: 1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: metrics
+            periodSeconds: {{ .Values.probes.liveness.periodSeconds }}
+            failureThreshold: 3
+            timeoutSeconds: 1
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 2"]
+          volumeMounts:
+            - name: artifact
+              mountPath: /app/artifact/model-artifact.txt
+              subPath: model-artifact.txt
+              readOnly: true
+      volumes:
+        - name: artifact
+          configMap:
+            name: {{ include "hw11.fullname" . }}-artifact

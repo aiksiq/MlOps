@@ -1,0 +1,303 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "hw11.fullname" . }}-prometheus
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "hw11.fullname" . }}-prometheus
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services", "endpoints", "namespaces"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["nodes/proxy"]
+    verbs: ["get"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "hw11.fullname" . }}-state-metrics
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "hw11.fullname" . }}-state-metrics
+rules:
+  - apiGroups: [""]
+    resources:
+      - configmaps
+      - endpoints
+      - namespaces
+      - nodes
+      - persistentvolumeclaims
+      - persistentvolumes
+      - pods
+      - replicationcontrollers
+      - resourcequotas
+      - services
+      - serviceaccounts
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["daemonsets", "deployments", "replicasets", "statefulsets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["batch"]
+    resources: ["cronjobs", "jobs"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["autoscaling"]
+    resources: ["horizontalpodautoscalers"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["storageclasses"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "hw11.fullname" . }}-state-metrics
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "hw11.fullname" . }}-state-metrics
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "hw11.fullname" . }}-state-metrics
+    namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "hw11.fullname" . }}-prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "hw11.fullname" . }}-prometheus
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "hw11.fullname" . }}-prometheus
+    namespace: {{ .Release.Namespace }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "hw11.fullname" . }}-prometheus
+data:
+  prometheus.yml: |-
+{{ .Files.Get "files/prometheus.yml" | replace "__NAMESPACE__" .Release.Namespace | replace "__KSM_SERVICE__" (printf "%s-kube-state-metrics.%s.svc:8080" (include "hw11.fullname" .) .Release.Namespace) | nindent 4 }}
+  alerts.yml: |-
+{{ .Files.Get "files/alerts.yml" | nindent 4 }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hw11.fullname" . }}-prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hw11-prometheus
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hw11-prometheus
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      serviceAccountName: {{ include "hw11.fullname" . }}-prometheus
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v2.55.1
+          args:
+            - --config.file=/etc/prometheus/prometheus.yml
+            - --storage.tsdb.path=/prometheus
+            - --storage.tsdb.retention.time=24h
+            - --storage.tsdb.retention.size=512MB
+            - --web.enable-lifecycle
+          ports:
+            - name: http
+              containerPort: 9090
+          resources:
+            requests:
+              cpu: 100m
+              memory: 192Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: config
+              mountPath: /etc/prometheus
+              readOnly: true
+            - name: storage
+              mountPath: /prometheus
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "hw11.fullname" . }}-prometheus
+        - name: storage
+          emptyDir:
+            sizeLimit: 600Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "hw11.fullname" . }}-prometheus
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: hw11-prometheus
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  ports:
+    - name: http
+      port: 9090
+      targetPort: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hw11.fullname" . }}-kube-state-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hw11-kube-state-metrics
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hw11-kube-state-metrics
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      serviceAccountName: {{ include "hw11.fullname" . }}-state-metrics
+      containers:
+        - name: kube-state-metrics
+          image: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.13.0
+          ports:
+            - name: metrics
+              containerPort: 8080
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "hw11.fullname" . }}-kube-state-metrics
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: hw11-kube-state-metrics
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  ports:
+    - name: metrics
+      port: 8080
+      targetPort: metrics
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "hw11.fullname" . }}-grafana
+  labels:
+    grafana_dashboard: "1"
+data:
+  dashboard-provider.yml: |-
+{{ .Files.Get "files/dashboard-provider.yml" | nindent 4 }}
+  hw11-dashboard.json: |-
+{{ .Files.Get "files/grafana-dashboard.json" | replace "__NAMESPACE__" .Release.Namespace | nindent 4 }}
+  datasource.yml: |-
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        uid: prometheus
+        type: prometheus
+        access: proxy
+        url: http://{{ include "hw11.fullname" . }}-prometheus:9090
+        isDefault: true
+        editable: false
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hw11.fullname" . }}-grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hw11-grafana
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hw11-grafana
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 472
+        runAsGroup: 472
+        fsGroup: 472
+      containers:
+        - name: grafana
+          image: grafana/grafana:11.4.0
+          env:
+            - name: GF_AUTH_ANONYMOUS_ENABLED
+              value: "true"
+            - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+              value: Viewer
+            - name: GF_USERS_DEFAULT_THEME
+              value: light
+          ports:
+            - name: http
+              containerPort: 3000
+          resources:
+            requests:
+              cpu: 50m
+              memory: 96Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: config
+              mountPath: /etc/grafana/provisioning/datasources/datasource.yml
+              subPath: datasource.yml
+              readOnly: true
+            - name: config
+              mountPath: /etc/grafana/provisioning/dashboards/provider.yml
+              subPath: dashboard-provider.yml
+              readOnly: true
+            - name: config
+              mountPath: /etc/grafana/dashboards/hw11-dashboard.json
+              subPath: hw11-dashboard.json
+              readOnly: true
+            - name: data
+              mountPath: /var/lib/grafana
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "hw11.fullname" . }}-grafana
+        - name: data
+          emptyDir:
+            sizeLimit: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "hw11.fullname" . }}-grafana
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: hw11-grafana
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  ports:
+    - name: http
+      port: 3000
+      targetPort: http
+{{- end }}

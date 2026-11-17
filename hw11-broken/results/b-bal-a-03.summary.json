@@ -1,0 +1,32 @@
+{
+  "run_id": "b-bal-a-03",
+  "backend_mode": "simulated",
+  "scenario": "balanced",
+  "policy": "affinity",
+  "duration_seconds": 120.0,
+  "total_rps": 8.0,
+  "counts": {
+    "planned": 960,
+    "sent": 960,
+    "completed": 701,
+    "rejected": 259,
+    "aborted": 0,
+    "timed_out": 0,
+    "client_error": 0
+  },
+  "successful_latency_seconds": {
+    "observations": 701,
+    "ttfc_p50": 1.9242400000000046,
+    "ttfc_p95": 2.0060430000000053,
+    "full_p50": 2.1335790000000046,
+    "full_p95": 2.2163690000000003,
+    "inter_chunk_observations": 3505,
+    "inter_chunk_p50": 0.041485,
+    "inter_chunk_p95": 0.042578399999999995,
+    "queue_observations": 701,
+    "queue_p50": 1.8547850099998868,
+    "queue_p95": 1.939145102999646,
+    "error_ratio": 0.26979166666666665
+  },
+  "output": "C:\\mlops\\MlOps\\hw11-broken\\results\\b-bal-a-03.csv"
+}

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: hw11-simulator
+description: Reproducible CPU-only streaming inference simulator for MLOps HW11
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

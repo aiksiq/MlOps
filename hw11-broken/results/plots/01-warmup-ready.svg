@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="500" viewBox="0 0 1080 500">
+<rect width="100%" height="100%" fill="white"/>
+<text x="540.0" y="28" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">Warmup and Service readiness</text>
+<text x="20" y="62" font-size="15" fill="#334155">Ready Pods / eligible Service endpoints (count)</text>
+<line x1="90" y1="60" x2="90" y2="386" stroke="#64748b"/>
+<line x1="90" y1="386" x2="820" y2="386" stroke="#64748b"/>
+<line x1="90" y1="386.0" x2="820" y2="386.0" stroke="#e2e8f0"/>
+<text x="80" y="390.0" text-anchor="end" font-size="11" fill="#64748b">0</text>
+<line x1="90" y1="304.5" x2="820" y2="304.5" stroke="#e2e8f0"/>
+<text x="80" y="308.5" text-anchor="end" font-size="11" fill="#64748b">0.825</text>
+<line x1="90" y1="223.0" x2="820" y2="223.0" stroke="#e2e8f0"/>
+<text x="80" y="227.0" text-anchor="end" font-size="11" fill="#64748b">1.65</text>
+<line x1="90" y1="141.5" x2="820" y2="141.5" stroke="#e2e8f0"/>
+<text x="80" y="145.5" text-anchor="end" font-size="11" fill="#64748b">2.48</text>
+<line x1="90" y1="60.0" x2="820" y2="60.0" stroke="#e2e8f0"/>
+<text x="80" y="64.0" text-anchor="end" font-size="11" fill="#64748b">3.3</text>
+<line x1="90.0" y1="386" x2="90.0" y2="390" stroke="#64748b"/>
+<text x="90.0" y="406" text-anchor="middle" font-size="11" fill="#64748b">0 s</text>
+<line x1="820.0" y1="386" x2="820.0" y2="390" stroke="#64748b"/>
+<text x="820.0" y="406" text-anchor="middle" font-size="11" fill="#64748b">68 s</text>
+<polyline points="90.0,188.4 114.6,188.4 139.3,188.4 163.7,89.6 188.2,89.6 212.6,89.6 237.9,89.6 262.2,188.4 286.4,188.4 310.9,188.4 335.2,188.4 359.5,188.4 383.6,188.4 407.8,188.4 432.0,188.4 456.2,188.4 480.5,89.6 505.0,89.6 529.3,188.4 553.5,188.4 577.7,188.4 601.9,188.4 626.1,188.4 650.4,188.4 674.6,188.4 698.8,188.4 723.0,188.4 747.2,89.6 771.5,89.6 795.7,188.4 820.0,188.4" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="90.0" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="114.6" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="139.3" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="163.7" cy="89.6" r="3" fill="#2563eb"/>
+<circle cx="188.2" cy="89.6" r="3" fill="#2563eb"/>
+<circle cx="212.6" cy="89.6" r="3" fill="#2563eb"/>
+<circle cx="237.9" cy="89.6" r="3" fill="#2563eb"/>
+<circle cx="262.2" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="286.4" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="310.9" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="335.2" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="359.5" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="383.6" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="407.8" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="432.0" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="456.2" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="480.5" cy="89.6" r="3" fill="#2563eb"/>
+<circle cx="505.0" cy="89.6" r="3" fill="#2563eb"/>
+<circle cx="529.3" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="553.5" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="577.7" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="601.9" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="626.1" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="650.4" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="674.6" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="698.8" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="723.0" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="747.2" cy="89.6" r="3" fill="#2563eb"/>
+<circle cx="771.5" cy="89.6" r="3" fill="#2563eb"/>
+<circle cx="795.7" cy="188.4" r="3" fill="#2563eb"/>
+<circle cx="820.0" cy="188.4" r="3" fill="#2563eb"/>
+<line x1="850" y1="62" x2="872" y2="62" stroke="#2563eb" stroke-width="3"/>
+<text x="880" y="66" font-size="12" fill="#334155">Ready Pods</text>
+<polyline points="90.0,188.4 114.6,188.4 139.3,188.4 163.7,89.6 188.2,188.4 212.6,89.6 237.9,188.4 262.2,188.4 286.4,188.4 310.9,188.4 335.2,188.4 359.5,188.4 383.6,188.4 407.8,188.4 432.0,188.4 456.2,188.4 480.5,89.6 505.0,188.4 529.3,188.4 553.5,188.4 577.7,188.4 601.9,188.4 626.1,188.4 650.4,188.4 674.6,188.4 698.8,188.4 723.0,188.4 747.2,89.6 771.5,188.4 795.7,188.4 820.0,188.4" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+<circle cx="90.0" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="114.6" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="139.3" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="163.7" cy="89.6" r="3" fill="#dc2626"/>
+<circle cx="188.2" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="212.6" cy="89.6" r="3" fill="#dc2626"/>
+<circle cx="237.9" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="262.2" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="286.4" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="310.9" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="335.2" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="359.5" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="383.6" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="407.8" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="432.0" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="456.2" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="480.5" cy="89.6" r="3" fill="#dc2626"/>
+<circle cx="505.0" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="529.3" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="553.5" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="577.7" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="601.9" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="626.1" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="650.4" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="674.6" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="698.8" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="723.0" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="747.2" cy="89.6" r="3" fill="#dc2626"/>
+<circle cx="771.5" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="795.7" cy="188.4" r="3" fill="#dc2626"/>
+<circle cx="820.0" cy="188.4" r="3" fill="#dc2626"/>
+<line x1="850" y1="81" x2="872" y2="81" stroke="#dc2626" stroke-width="3"/>
+<text x="880" y="85" font-size="12" fill="#334155">Ready Service endpoints</text>
+<text x="455" y="476" text-anchor="middle" font-size="13" fill="#334155">Time from first sample</text>
+</svg>

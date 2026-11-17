@@ -1,0 +1,31 @@
+{
+  "run_id": "bad-probe",
+  "backend_mode": "simulated",
+  "scenario": "balanced",
+  "duration_seconds": 30.0,
+  "total_rps": 8.0,
+  "counts": {
+    "planned": 240,
+    "sent": 240,
+    "completed": 114,
+    "rejected": 126,
+    "aborted": 0,
+    "timed_out": 0,
+    "client_error": 0
+  },
+  "successful_latency_seconds": {
+    "observations": 114,
+    "ttfc_p50": 0.7727430000000002,
+    "ttfc_p95": 1.8961769000000002,
+    "full_p50": 0.9777055000000003,
+    "full_p95": 2.1019020500000005,
+    "inter_chunk_observations": 570,
+    "inter_chunk_p50": 0.040842500000000004,
+    "inter_chunk_p95": 0.0414703,
+    "queue_observations": 114,
+    "queue_p50": 0.7028277330000492,
+    "queue_p95": 1.8328168898500845,
+    "error_ratio": 0.525
+  },
+  "output": "C:\\mlops\\MlOps\\hw11-broken\\results\\bad-probe.csv"
+}

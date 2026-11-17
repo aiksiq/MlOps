@@ -1,0 +1,13 @@
+﻿{
+    "oldPod":  "hw11-hw11-simulator-7c967bfc97-f6css",
+    "newPod":  "hw11-hw11-simulator-7c967bfc97-mflc8",
+    "replicaSet":  "hw11-hw11-simulator-7c967bfc97",
+    "expectedModelVersion":  "sim-v3",
+    "expectedArtifactSha256":  "3a6b97599b5e54e173d6ac02399ce5fa49970d886d05a864ea0fc36fe6d0bc90",
+    "forcedStreamRequestId":  "f6ea7b61-16b5-4391-9f39-4e4c18841e31",
+    "forcedStreamOutcome":  "aborted",
+    "forcedStreamLog":  "forced-stream.log",
+    "forcedAtUtc":  "2026-11-15T16:59:37.1919249Z",
+    "replacementReadyAtUtc":  "2026-11-15T17:00:00.1715197Z",
+    "recoverySeconds":  22.98
+}

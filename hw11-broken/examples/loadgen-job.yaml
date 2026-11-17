@@ -1,0 +1,67 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hw11-loadgen-balanced
+  namespace: hw11
+spec:
+  completionMode: Indexed
+  completions: 4
+  parallelism: 4
+  backoffLimit: 0
+  activeDeadlineSeconds: 240
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hw11-loadgen
+    spec:
+      restartPolicy: Never
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+      containers:
+        - name: loadgen
+          image: hw11-simulator:0.1.0
+          imagePullPolicy: IfNotPresent
+          command: ["python", "loadgen.py"]
+          args:
+            - --url
+            - http://hw11-hw11-simulator:8080
+            - --duration
+            - "120"
+            - --total-rps
+            - "8"
+            - --scenario
+            - balanced
+            - --client-count
+            - "4"
+            - --concurrency
+            - "4"
+            - --run-id
+            - balanced-01
+            - --output
+            - /results/requests.csv
+          env:
+            - name: CLIENT_INDEX
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.annotations['batch.kubernetes.io/job-completion-index']
+            - name: CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          resources:
+            requests:
+              cpu: 100m
+              memory: 96Mi
+            limits:
+              cpu: 500m
+              memory: 192Mi
+          volumeMounts:
+            - name: results
+              mountPath: /results
+      volumes:
+        - name: results
+          emptyDir:
+            sizeLimit: 64Mi
